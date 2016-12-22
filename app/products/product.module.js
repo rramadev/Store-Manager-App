@@ -13,6 +13,9 @@ var router_1 = require("@angular/router");
 var product_list_component_1 = require("./product-list.component");
 var product_detail_component_1 = require("./product-detail.component");
 var product_filter_pipe_1 = require("./product-filter.pipe");
+var product_filter_store_pipe_1 = require("./product-filter-store.pipe");
+var product_filter_store_field_pipe_1 = require("./product-filter-store-field.pipe");
+var product_filter_store_orderBy_pipe_1 = require("./product-filter-store-orderBy.pipe");
 var product_guard_service_1 = require("./product-guard.service");
 var product_service_1 = require("./product.service");
 var shared_module_1 = require("../shared/shared.module");
@@ -26,7 +29,10 @@ ProductModule = __decorate([
         declarations: [
             product_list_component_1.ProductListComponent,
             product_detail_component_1.ProductDetailComponent,
-            product_filter_pipe_1.ProductFilterPipe
+            product_filter_pipe_1.ProductFilterPipe,
+            product_filter_store_pipe_1.StoreFilterPipe,
+            product_filter_store_field_pipe_1.StoreFieldFilterPipe,
+            product_filter_store_orderBy_pipe_1.StoreOrderByFilterPipe
         ],
         imports: [
             shared_module_1.SharedModule,

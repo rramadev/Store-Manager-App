@@ -18,11 +18,18 @@ var ProductService = (function () {
     function ProductService(_http) {
         this._http = _http;
         this._productUrl = 'api/products/products.json';
+        this._storeUrl = 'api/products/mealsaverStores.json';
     }
     ProductService.prototype.getProducts = function () {
         return this._http.get(this._productUrl)
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    ProductService.prototype.getStores = function () {
+        return this._http.get(this._storeUrl)
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('All Stores: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     ProductService.prototype.handleError = function (error) {

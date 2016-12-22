@@ -22,6 +22,10 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
+        declarations: [
+            app_component_1.AppComponent,
+            welcome_component_1.WelcomeComponent
+        ],
         imports: [
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
@@ -31,10 +35,6 @@ AppModule = __decorate([
                 { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
             ]),
             product_module_1.ProductModule
-        ],
-        declarations: [
-            app_component_1.AppComponent,
-            welcome_component_1.WelcomeComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     }),

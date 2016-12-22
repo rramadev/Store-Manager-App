@@ -14,9 +14,10 @@ var ProductListComponent = (function () {
     function ProductListComponent(_productService) {
         this._productService = _productService;
         this.pageTitle = 'Product List';
-        this.imageWidth = 50;
+        this.imageWidth = 70;
         this.imageMargin = 2;
         this.showImage = false;
+        this.placeholderFilter = 'Introduce a filter...';
     }
     ProductListComponent.prototype.toggleImage = function () {
         this.showImage = !this.showImage;
@@ -25,6 +26,15 @@ var ProductListComponent = (function () {
         var _this = this;
         this._productService.getProducts()
             .subscribe(function (products) { return _this.products = products; }, function (error) { return _this.errorMessage = error; });
+        this._productService.getStores()
+            .subscribe(function (stores) { return _this.stores = stores; }, function (error) { return _this.errorMessage = error; }, function () {
+            _this.orderByFilter = 'name';
+            for (var _i = 0, _a = _this.stores; _i < _a.length; _i++) {
+                var store = _a[_i];
+                store['imageUrl'] = "https://openclipart.org/download/216947/bread-and-banana02.svg";
+            }
+            ;
+        });
     };
     ProductListComponent.prototype.onRatingClicked = function (message) {
         this.pageTitle = 'Product List: ' + message;

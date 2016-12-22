@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { IProduct } from './product';
+import { IStore } from './store';
 import { ProductService } from './product.service';
 
 @Component({
@@ -9,13 +10,17 @@ import { ProductService } from './product.service';
 })
 export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
-    imageWidth: number = 50;
+    imageWidth: number = 70;
     imageMargin: number = 2;
     showImage: boolean = false;
     listFilter: string;
+    storeFilter: string;
+    orderByFilter: string;
+    placeholderFilter: string = 'Introduce a filter...';
     errorMessage: string;
 
     products: IProduct[];
+    stores: IStore[];
 
     constructor(private _productService: ProductService) {
 
@@ -23,15 +28,27 @@ export class ProductListComponent implements OnInit {
 
     toggleImage(): void {
         this.showImage = !this.showImage;
+
     }
 
     ngOnInit(): void {
         this._productService.getProducts()
                 .subscribe(products => this.products = products,
                            error => this.errorMessage = <any>error);
+      this._productService.getStores()
+       .subscribe(stores => this.stores = stores,
+         error => this.errorMessage = <any>error,
+         () => {
+           this.orderByFilter = 'name';
+           for (let store of this.stores) {
+              store['imageUrl'] = "https://openclipart.org/download/216947/bread-and-banana02.svg";
+           };
+         }
+       );
     }
 
     onRatingClicked(message: string): void {
         this.pageTitle = 'Product List: ' + message;
     }
+
 }

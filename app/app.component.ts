@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'pm-app',
+    selector: 'acme-app',
     template: `
     <div>
         <nav class='navbar navbar-default'>
@@ -20,5 +20,5 @@ import { Component } from '@angular/core';
      `
 })
 export class AppComponent {
-    pageTitle: string = `Acme Product Management Cool`;
+    pageTitle: string = `Acme Product Management`;
 }

@@ -10,6 +10,7 @@ import { IProduct } from './product';
 @Injectable()
 export class ProductService {
     private _productUrl = 'api/products/products.json';
+    private _storeUrl = 'api/products/mealsaverStores.json';
 
     constructor(private _http: Http) {}
 
@@ -17,6 +18,13 @@ export class ProductService {
         return this._http.get(this._productUrl)
             .map((response: Response) => <IProduct[]> response.json())
             .do(data => console.log('All: ' +  JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    getStores() {
+        return this._http.get(this._storeUrl)
+            .map((response: Response) => response.json())
+            .do(data => console.log('All Stores: ' +  JSON.stringify(data)))
             .catch(this.handleError);
     }
 
