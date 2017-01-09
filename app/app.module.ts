@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent }  from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { ProductModule } from './products/product.module';
+import { StoreModule } from './stores/store.module';
+import { AppRoutingModule } from './routes/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,9 @@ import { ProductModule } from './products/product.module';
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot([
-      { path: 'welcome', component: WelcomeComponent },
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-      { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
-    ]),
-    ProductModule
+    AppRoutingModule,
+    ProductModule,
+    StoreModule
   ],
   bootstrap: [ AppComponent ]
 })

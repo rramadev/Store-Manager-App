@@ -57,53 +57,5 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- Test -->
-        <hr>
-        <div class='table-responsive'>
-          <div class='row'>
-              <div class='col-md-1'>Filter by:</div>
-              <div class='col-md-2'>
-                  <input type='text' class="form-control" [(ngModel)]='storeFilter' [placeholder]='placeholderFilter'/>
-              </div>
-          </div>
-          <div class='row'>
-              <div class='col-md-1'>Order By:</div>
-              <div class='col-md-2'>
-                <select class="form-control" id="sel1" style="max-width: 200px;"
-                [(ngModel)]='orderByFilter'>
-                  <option value='name' selected>Name</option>
-                  <option value='address'>Address</option>
-                </select>
-              </div>
-          </div>
-
-            <table class='table'
-            *ngIf='stores && stores.length'>
-                <thead>
-                    <tr>
-                        <th>Index</th>
-                        <th></th>
-                        <th>Store</th>
-                        <th>Address</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let store of stores  | storeFieldFilter:'address' | storeFilter:storeFilter | orderBy:orderByFilter; let i = index">
-                        <td>{{ i+1 }}</td>
-                        <td>
-                          <img *ngIf='showImage'
-                            [src]='store.imageUrl'
-                            [title]='store.name'
-                            [style.width.px]='imageWidth'
-                            [style.margin.px]='imageMargin'>
-                        </td>
-                        <td>{{ store.name }}</td>
-                        <td>{{ store.address }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- /Test -->
     </div>
 </div>

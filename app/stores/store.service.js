@@ -14,25 +14,25 @@ var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/do");
 require("rxjs/add/operator/map");
-var ProductService = (function () {
-    function ProductService(_http) {
+var StoreService = (function () {
+    function StoreService(_http) {
         this._http = _http;
-        this._productUrl = 'api/products/products.json';
+        this._storeUrl = 'api/products/mealsaverStores.json';
     }
-    ProductService.prototype.getProducts = function () {
-        return this._http.get(this._productUrl)
+    StoreService.prototype.getStores = function () {
+        return this._http.get(this._storeUrl)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    ProductService.prototype.handleError = function (error) {
+    StoreService.prototype.handleError = function (error) {
         console.error(error);
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
-    return ProductService;
+    return StoreService;
 }());
-ProductService = __decorate([
+StoreService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], ProductService);
-exports.ProductService = ProductService;
-//# sourceMappingURL=product.service.js.map
+], StoreService);
+exports.StoreService = StoreService;
+//# sourceMappingURL=store.service.js.map

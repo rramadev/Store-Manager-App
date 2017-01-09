@@ -27,4 +27,4 @@ StoreFieldFilterPipe = __decorate([
     __metadata("design:paramtypes", [])
 ], StoreFieldFilterPipe);
 exports.StoreFieldFilterPipe = StoreFieldFilterPipe;
-//# sourceMappingURL=product-filter-store-field.pipe.js.map
+//# sourceMappingURL=store-field-filter.pipe.js.map

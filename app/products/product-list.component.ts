@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { IProduct } from './product';
-import { IStore } from './store';
+import { IStore } from '../stores/store';
 import { ProductService } from './product.service';
 
 @Component({
@@ -23,28 +23,16 @@ export class ProductListComponent implements OnInit {
     stores: IStore[];
 
     constructor(private _productService: ProductService) {
-
     }
 
     toggleImage(): void {
         this.showImage = !this.showImage;
-
     }
 
     ngOnInit(): void {
-        this._productService.getProducts()
-                .subscribe(products => this.products = products,
-                           error => this.errorMessage = <any>error);
-      this._productService.getStores()
-       .subscribe(stores => this.stores = stores,
-         error => this.errorMessage = <any>error,
-         () => {
-           this.orderByFilter = 'name';
-           for (let store of this.stores) {
-              store['imageUrl'] = "https://openclipart.org/download/216947/bread-and-banana02.svg";
-           };
-         }
-       );
+      this._productService.getProducts()
+              .subscribe(products => this.products = products,
+                         error => this.errorMessage = <any>error);    
     }
 
     onRatingClicked(message: string): void {

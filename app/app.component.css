@@ -8,4 +8,4 @@ div.panel-heading {
 
 /*Overrides bootstrap css*/
 .table>tbody>tr>td { vertical-align: middle; }
-.table-responsive { overflow-x: visible; }
+.table-responsive { overflow-x: hidden; }

@@ -39,4 +39,4 @@ StoreOrderByFilterPipe = __decorate([
     __metadata("design:paramtypes", [])
 ], StoreOrderByFilterPipe);
 exports.StoreOrderByFilterPipe = StoreOrderByFilterPipe;
-//# sourceMappingURL=product-filter-store-orderBy.pipe.js.map
+//# sourceMappingURL=store-orderBy-filter.pipe.js.map

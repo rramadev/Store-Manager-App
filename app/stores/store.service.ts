@@ -5,19 +5,19 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
-import { IProduct } from './product';
+import { IStore } from './store';
 
 @Injectable()
-export class ProductService {
-    private _productUrl = 'api/products/products.json';
+export class StoreService {
+    private _storeUrl = 'api/products/mealsaverStores.json';
 
     constructor(private _http: Http) {}
 
-    getProducts(): Observable<IProduct[]> {
-        return this._http.get(this._productUrl)
-            .map((response: Response) => <IProduct[]> response.json())
-            // .do(data => console.log('All: ' +  JSON.stringify(data)))
-            .catch(this.handleError);
+    getStores(): Observable<IStore[]> {
+      return this._http.get(this._storeUrl)
+        .map((response: Response) => <IStore[]> response.json())
+        // .do(data => console.log('All Stores: ' +  JSON.stringify(data)))
+        .catch(this.handleError);
     }
 
     private handleError(error: Response) {

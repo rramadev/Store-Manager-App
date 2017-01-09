@@ -33,4 +33,4 @@ StoreFilterPipe = __decorate([
     __metadata("design:paramtypes", [])
 ], StoreFilterPipe);
 exports.StoreFilterPipe = StoreFilterPipe;
-//# sourceMappingURL=product-filter-store.pipe.js.map
+//# sourceMappingURL=store-filter.pipe.js.map

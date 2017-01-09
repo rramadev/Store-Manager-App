@@ -10,34 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var app_routing_module_1 = require("../routes/app-routing.module");
-var product_list_component_1 = require("./product-list.component");
-var product_detail_component_1 = require("./product-detail.component");
-var product_filter_pipe_1 = require("./product-filter.pipe");
-var product_guard_service_1 = require("./product-guard.service");
-var product_service_1 = require("./product.service");
+var store_list_component_1 = require("./store-list.component");
+var store_filter_pipe_1 = require("./store-filter.pipe");
+var store_field_filter_pipe_1 = require("./store-field-filter.pipe");
+var store_orderBy_filter_pipe_1 = require("./store-orderBy-filter.pipe");
+var store_service_1 = require("./store.service");
 var shared_module_1 = require("../shared/shared.module");
-var ProductModule = (function () {
-    function ProductModule() {
+var StoreModule = (function () {
+    function StoreModule() {
     }
-    return ProductModule;
+    return StoreModule;
 }());
-ProductModule = __decorate([
+StoreModule = __decorate([
     core_1.NgModule({
         declarations: [
-            product_list_component_1.ProductListComponent,
-            product_detail_component_1.ProductDetailComponent,
-            product_filter_pipe_1.ProductFilterPipe
+            store_list_component_1.StoreListComponent,
+            store_filter_pipe_1.StoreFilterPipe,
+            store_field_filter_pipe_1.StoreFieldFilterPipe,
+            store_orderBy_filter_pipe_1.StoreOrderByFilterPipe
         ],
         imports: [
             app_routing_module_1.AppRoutingModule,
             shared_module_1.SharedModule
         ],
         providers: [
-            product_service_1.ProductService,
-            product_guard_service_1.ProductDetailGuard
+            store_service_1.StoreService
         ]
     }),
     __metadata("design:paramtypes", [])
-], ProductModule);
-exports.ProductModule = ProductModule;
-//# sourceMappingURL=product.module.js.map
+], StoreModule);
+exports.StoreModule = StoreModule;
+//# sourceMappingURL=store.module.js.map
