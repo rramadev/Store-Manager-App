@@ -15,6 +15,16 @@ var product_list_component_1 = require("../products/product-list.component");
 var product_detail_component_1 = require("../products/product-detail.component");
 var product_guard_service_1 = require("../products/product-guard.service");
 var store_list_component_1 = require("../stores/store-list.component");
+var appRoutes = [
+    { path: 'welcome', component: welcome_component_1.WelcomeComponent },
+    { path: 'stores', component: store_list_component_1.StoreListComponent },
+    { path: 'products', component: product_list_component_1.ProductListComponent },
+    { path: 'product/:id',
+        canActivate: [product_guard_service_1.ProductDetailGuard],
+        component: product_detail_component_1.ProductDetailComponent },
+    { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+    { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
     }
@@ -23,18 +33,8 @@ var AppRoutingModule = (function () {
 AppRoutingModule = __decorate([
     core_1.NgModule({
         imports: [
-            router_1.RouterModule.forRoot([
-                { path: 'welcome', component: welcome_component_1.WelcomeComponent },
-                { path: 'products', component: product_list_component_1.ProductListComponent },
-                { path: 'product/:id',
-                    canActivate: [product_guard_service_1.ProductDetailGuard],
-                    component: product_detail_component_1.ProductDetailComponent },
-                { path: 'stores', component: store_list_component_1.StoreListComponent },
-                { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-                { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
-            ])
+            router_1.RouterModule.forRoot(appRoutes)
         ],
-        // { useHash: true }),],
         exports: [router_1.RouterModule]
     }),
     __metadata("design:paramtypes", [])

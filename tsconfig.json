@@ -9,10 +9,14 @@
     "removeComments": false,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": [ "node", "core-js" ]
   },
   "exclude": [
       "node_modules",
-      "typings/index.d.ts"
+      "public"
+  ],
+  "filesGlob": [
+    "app/**/*.ts"
   ]
 }

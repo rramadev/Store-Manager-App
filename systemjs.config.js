@@ -1,7 +1,7 @@
 /**
- * System configuration for Angular 2 samples
- * Adjust as necessary for your application needs.
+ * System configuration for Angular 2
  */
+ 
 (function (global) {
   System.config({
     paths: {
@@ -22,6 +22,7 @@
       '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+      '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
 
       // other libraries
       'rxjs': 'npm:rxjs'

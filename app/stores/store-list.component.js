@@ -57,8 +57,9 @@ var StoreListComponent = (function () {
 }());
 StoreListComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/stores/store-list.component.html',
-        styleUrls: ['app/stores/store-list.component.css']
+        moduleId: module.id,
+        templateUrl: 'store-list.component.html',
+        styleUrls: ['store-list.component.css']
     }),
     __metadata("design:paramtypes", [store_service_1.StoreService])
 ], StoreListComponent);

@@ -32,8 +32,9 @@ __decorate([
 StarComponent = __decorate([
     core_1.Component({
         selector: 'ai-star',
-        templateUrl: 'app/shared/star.component.html',
-        styleUrls: ['app/shared/star.component.css']
+        moduleId: module.id,
+        templateUrl: 'star.component.html',
+        styleUrls: ['star.component.css']
     }),
     __metadata("design:paramtypes", [])
 ], StarComponent);

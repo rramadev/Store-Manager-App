@@ -5,8 +5,9 @@ import { IStore } from '../stores/store';
 import { ProductService } from './product.service';
 
 @Component({
-    templateUrl: 'app/products/product-list.component.html',
-    styleUrls: ['app/products/product-list.component.css']
+    moduleId: module.id,
+    templateUrl: 'product-list.component.html',
+    styleUrls: ['product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
@@ -32,7 +33,7 @@ export class ProductListComponent implements OnInit {
     ngOnInit(): void {
       this._productService.getProducts()
               .subscribe(products => this.products = products,
-                         error => this.errorMessage = <any>error);    
+                         error => this.errorMessage = <any>error);
     }
 
     onRatingClicked(message: string): void {

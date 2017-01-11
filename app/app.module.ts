@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '@angular/material';
 
 import { AppComponent }  from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
@@ -19,7 +20,8 @@ import { AppRoutingModule } from './routes/app-routing.module';
     HttpModule,
     AppRoutingModule,
     ProductModule,
-    StoreModule
+    StoreModule,
+    MaterialModule.forRoot()
   ],
   bootstrap: [ AppComponent ]
 })

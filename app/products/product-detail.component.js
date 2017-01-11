@@ -10,27 +10,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var product_service_1 = require("./product.service");
 var ProductDetailComponent = (function () {
-    function ProductDetailComponent(_route, _router) {
+    function ProductDetailComponent(_route, _router, _productService) {
         this._route = _route;
         this._router = _router;
+        this._productService = _productService;
         this.pageTitle = 'Product Detail';
     }
     ProductDetailComponent.prototype.ngOnInit = function () {
-        var id = +this._route.snapshot.params['id'];
-        this.pageTitle += ": " + id;
+        var _this = this;
+        // let id = +this._route.snapshot.params['id'];
+        // this.pageTitle += `: ${id}`;
+        this.sub = this._route.params.subscribe(function (params) {
+            var id = +params['id'];
+            _this.getProduct(id);
+        });
+    };
+    ProductDetailComponent.prototype.getProduct = function (id) {
+        var _this = this;
+        this._productService.getProduct(id).subscribe(function (product) { return _this.product = product; }, function (error) { return _this.errorMessage = error; });
     };
     ProductDetailComponent.prototype.onBack = function () {
         this._router.navigate(['/products']);
+    };
+    ProductDetailComponent.prototype.onRatingClicked = function (message) {
+        this.pageTitle = 'Product Detail: ' + message;
     };
     return ProductDetailComponent;
 }());
 ProductDetailComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/products/product-detail.component.html'
+        moduleId: module.id,
+        templateUrl: 'product-detail.component.html'
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        router_1.Router])
+        router_1.Router,
+        product_service_1.ProductService])
 ], ProductDetailComponent);
 exports.ProductDetailComponent = ProductDetailComponent;
 //# sourceMappingURL=product-detail.component.js.map

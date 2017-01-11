@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
+var material_1 = require("@angular/material");
 var app_component_1 = require("./app.component");
 var welcome_component_1 = require("./home/welcome.component");
 var product_module_1 = require("./products/product.module");
@@ -32,7 +33,8 @@ AppModule = __decorate([
             http_1.HttpModule,
             app_routing_module_1.AppRoutingModule,
             product_module_1.ProductModule,
-            store_module_1.StoreModule
+            store_module_1.StoreModule,
+            material_1.MaterialModule.forRoot()
         ],
         bootstrap: [app_component_1.AppComponent]
     }),
