@@ -8,23 +8,23 @@ import { ProductService } from './product.service';
 
 @Component({
 	moduleId: module.id,
-	templateUrl: 'product-detail.component.html'
+	templateUrl: './product-detail.component.html',
+	styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
 	pageTitle: string = 'Product Detail';
 	product: IProduct;
 	errorMessage: string;
-	private sub: Subscription;
+	private subcription: Subscription;
 
-	constructor(private _route: ActivatedRoute,
-        private _router: Router,
-        private _productService: ProductService) {
-	}
+	constructor(private route: ActivatedRoute,
+							private router: Router,
+						  private productService: ProductService) {	}
 
 	ngOnInit(): void {
-		// let id = +this._route.snapshot.params['id'];
+		// let id = +this.route.snapshot.params['id'];
 		// this.pageTitle += `: ${id}`;
-		this.sub = this._route.params.subscribe(
+		this.subcription = this.route.params.subscribe(
 			params => {
 				let id = +params['id'];
 				this.getProduct(id);
@@ -32,13 +32,13 @@ export class ProductDetailComponent implements OnInit {
 	}
 
 	getProduct(id: number) {
-		this._productService.getProduct(id).subscribe(
+		this.productService.getProduct(id).subscribe(
 			product => this.product = product,
 			error => this.errorMessage = <any>error);
 	}
 
 	onBack(): void {
-		this._router.navigate(['/products']);
+		this.router.navigate(['/products']);
 	}
 
 	onRatingClicked(message: string): void {

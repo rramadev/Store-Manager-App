@@ -4,10 +4,10 @@ Output, EventEmitter } from '@angular/core';
 import { LoggerService } from '../core/logger.service';
 
 @Component({
-  selector: 'ai-star',
+  selector: 'sm-shared-star',
   moduleId: module.id,
-  templateUrl: 'star.component.html',
-  styleUrls: ['star.component.css']
+  templateUrl: './star.component.html',
+  styleUrls: ['./star.component.css']
 })
 export class StarComponent implements OnChanges {
   @Input() rating: number;
@@ -15,8 +15,7 @@ export class StarComponent implements OnChanges {
   new EventEmitter<string>();
   starWidth: number;
 
-  constructor(private loggerService: LoggerService) {
-  }
+  constructor(private loggerService: LoggerService) { }
 
   ngOnChanges(): void {
     this.starWidth = this.rating * 86 / 5;

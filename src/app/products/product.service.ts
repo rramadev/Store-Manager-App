@@ -10,21 +10,21 @@ import { IProduct } from './product.model';
 
 @Injectable()
 export class ProductService {
-  private _productUrl = 'api/products/products.json';
-  private _products: Observable<IProduct[]> = null;
+  private productUrl = 'api/products/products.json';
+  private products: Observable<IProduct[]> = null;
 
-  constructor(private _http: Http) {}
+  constructor(private http: Http) {}
 
   getProducts(): Observable<IProduct[]> {
-    if (!this._products) {
-      this._products = this._http.get(this._productUrl)
+    if (!this.products) {
+      this.products = this.http.get(this.productUrl)
       .map((response: Response) => <IProduct[]> response.json())
       // .do(data => console.log('All: ' +  JSON.stringify(data)))
       .publishReplay(1)
       .refCount()
       .catch(this.handleError);
     }
-    return this._products;
+    return this.products;
   }
 
   getProduct(id: number): Observable<IProduct> {

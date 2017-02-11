@@ -5,27 +5,25 @@ import { StoreService } from './store.service';
 
 @Component({
 	moduleId: module.id,
-	templateUrl: 'store-list.component.html',
-	styleUrls: ['store-list.component.css']
+	templateUrl: './store-list.component.html',
+	styleUrls: ['./store-list.component.css']
 })
 export class StoreListComponent implements OnInit {
 	pageTitle: string = 'Store List';
 	imageWidth: number = 70;
 	imageMargin: number = 2;
 	showImage: boolean = false;
-
-	storeFilter: string = '';
 	storeFilterFields: string[] = ['name', 'address'];
 	storeNoDuplicateFilter: string = 'address';
-	orderByFilter: string = '';
 	placeholderFilter: string = 'Introduce a filter...';
 	errorMessage: string = '';
-	filterInput: string= '';
+	filterInput: string = '';
+	orderByFilter: string = '';
+	storeFilter: string = '';
 
 	stores: IStore[];
 
-	constructor(private _storeService: StoreService) {
-	}
+	constructor(private _storeService: StoreService) { }
 
 	setValue(input: string): void {
 		this.filterInput = input;

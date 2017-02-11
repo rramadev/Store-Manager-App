@@ -5,21 +5,24 @@ import { ProductService } from './product.service';
 
 @Component({
 	moduleId: module.id,
-	templateUrl: 'product-list.component.html',
-	styleUrls: ['product-list.component.css']
+	templateUrl: './product-list.component.html',
+	styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
 	pageTitle: string = 'Product List';
 	imageWidth: number = 70;
 	imageMargin: number = 2;
 	showImage: boolean = false;
-	listFilter: string;
 	placeholderFilter: string = 'Introduce a filter...';
-	errorMessage: string;
+	listFilter: string = '';
+	errorMessage: string = '';
 
 	products: IProduct[];
 
-	constructor(private _productService: ProductService) {
+	constructor(private productService: ProductService) { }
+
+	displayFilter(): string {
+		return '- Filtered by: ' + this.listFilter;
 	}
 
 	toggleImage(): void {
@@ -27,7 +30,7 @@ export class ProductListComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this._productService.getProducts()
+		this.productService.getProducts()
 			.subscribe(products => this.products = products,
 			error => this.errorMessage = <any>error);
 	}

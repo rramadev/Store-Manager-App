@@ -12,3 +12,6 @@ div.panel-heading {
   margin: 20px;
   width: 90%;
 }
+.navbar-brand {
+  padding: 0;
+}
