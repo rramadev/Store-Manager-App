@@ -5,44 +5,46 @@
   <div class="panel-body">
     <md-card>
       <div class="row">
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-4">
           <label for="sel1">Filter by:</label>
-          <input type="text" class="form-control" [(ngModel)]="storeFilter" [placeholder]="placeholderFilter" #inputFilter (keyup)="setValue(inputFilter.value)" />
+          <input id="sel1" type="text" class="form-control" [(ngModel)]="storeFilter" [placeholder]="placeholderFilter" #inputFilter (keyup)="setValue(inputFilter.value)" />
         </div>
-        <div class="col-md-3">
-          <label for="sel1">Order By:</label>
-          <select class="form-control" id="sel1" style="max-width: 200px;" [(ngModel)]="orderByFilter">
+        <div class="form-group col-md-4">
+          <label for="sel2">Order By:</label>
+          <select id="sel2" class="form-control" style="max-width: 200px;" [(ngModel)]="orderByFilter">
             <option value="name" selected>Name</option>
             <option value="address">Address</option>
           </select>
         </div>
         <div class="col-md-4">
-          <button class="btn btn-primary" (click)="toggleImage()">
+          <button id="sel3" class="btn btn-primary" (click)="toggleImage()">
             {{showImage ? "Hide" : "Show"}} Image
           </button>
         </div>
       </div>
     </md-card>
-    <table class="table" *ngIf="stores && stores.length">
-      <thead>
-        <tr>
-          <th>Index</th>
-          <th></th>
-          <th>Store</th>
-          <th>Address</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let store of stores  |
-              storeFieldFilter:storeNoDuplicateFilter | storeFilter:storeFilter:storeFilterFields | orderBy:orderByFilter; let i = index">
-          <td>{{ i+1 }}</td>
-          <td>
-            <img *ngIf="showImage" [src]="store.imageUrl" [title]="store.name" [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
-          </td>
-          <td>{{ store.name }}</td>
-          <td>{{ store.address }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table" *ngIf="stores && stores.length">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th></th>
+            <th>Store</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let store of stores  |
+                storeFieldFilter:storeNoDuplicateFilter | storeFilter:storeFilter:storeFilterFields | orderBy:orderByFilter; let i = index">
+            <td>{{ i+1 }}</td>
+            <td>
+              <img *ngIf="showImage" [src]="store.imageUrl" [title]="store.name" [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
+            </td>
+            <td>{{ store.name }}</td>
+            <td>{{ store.address }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

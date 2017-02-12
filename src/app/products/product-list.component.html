@@ -5,11 +5,12 @@
   <div class="panel-body">
     <md-card>
       <div class="row">
-        <div class="col-md-1">Filter by:</div>
-        <div class="col-md-2">
-          <input type="text" class="form-control" [(ngModel)]="listFilter" [placeholder]="placeholderFilter" />
+        <div class="form-group col-md-4">
+          <label for="sel1">Filter by:</label>
+          <input id="sel1" type="text" class="form-control"
+          [(ngModel)]="listFilter" [placeholder]="placeholderFilter" />
         </div>
-      </div>      
+      </div>
     </md-card>
 
     <div class="table-responsive">

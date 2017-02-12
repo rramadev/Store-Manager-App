@@ -5,12 +5,12 @@
   "description": "",
   "license": "ISC",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
-    "server": "node server.js",
+    "start": "tsc && concurrently \"tsc:w\" \"server\" ",
+    "server": "lite-server",
+    "server-npm": "node server.js",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lint": "tslint ./src/app/**/*.ts -t verbose",
-    "lite": "lite-server",
     "postinstall": "",
     "gulp": "gulp",
     "build": "gulp build"
@@ -60,5 +60,5 @@
     "tslint": "^4.4.2",
     "typescript": "*"
   },
-  "repository": {}
+  "repository": { }
 }
