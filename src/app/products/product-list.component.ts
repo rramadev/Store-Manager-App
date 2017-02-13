@@ -32,7 +32,7 @@ export class ProductListComponent implements OnInit {
 	ngOnInit(): void {
 		this.productService.getProducts()
 			.subscribe(products => this.products = products,
-			error => this.errorMessage = <any>error);
+				error => this.errorMessage = <any>error);
 	}
 
 	onRatingClicked(message: string): void {

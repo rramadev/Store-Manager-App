@@ -1,0 +1,143 @@
+/*fonts*/
+@font-face {
+  font-family: my256B;
+  src: url(../assets/fonts/256BYTES.ttf);
+}
+
+@font-face {
+  font-family: quicksand;
+  src: url(../assets/fonts/Quicksand-Bold.otf);
+}
+
+/*html, body*/
+*,
+  :before,
+  :after {
+    box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+html { font-size: 16px; /* Overrides user´s browser settings */ }
+/* Modular scale with 1.3 ratio */
+h1 { font-size: 2.19em; } /* 16px * 2.19 = 35.15px */
+h2 { font-size: 1.69em; } /* 16px * 1.69 = 27.04px */
+h3 { font-size: 1.3em; } /* 16px * 1.3 (Ratio) = 20.8px */
+
+/*nav*/
+nav.navbar {
+  background-color: #256588; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, lightblue, #256588);
+  background: -o-linear-gradient(right, lightblue, #256588);
+  background: -moz-linear-gradient(right, lightblue, #256588);
+  background: linear-gradient(to right, lightblue, #256588);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0 0 10px 10px;
+  border: 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+nav.navbar ul {
+  list-style-type: none;
+  border-radius: 0 0 0 10px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav.navbar li {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+
+nav.navbar li:last-child {
+  border-right: none;
+}
+
+nav.navbar li a {
+  color: #256588;
+}
+
+.nav > li > a:hover {
+  background-color: #b3cccc;
+}
+
+.nav > li > a:focus {
+  background-color: #b3cccc;
+}
+
+/*main*/
+section.main {
+  min-width: 100%;
+  background: url(../assets/images/bg.jpg) no-repeat center fixed;
+  background-size: cover;
+  padding: 80px 40px;
+}
+
+/*panel*/
+div.panel {
+  width: 80%;
+  max-width: 1024px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(102, 153, 153, 0.7);
+  border-radius: 10px;
+}
+
+img.logo {
+  border-radius: 10px;
+}
+
+/*panel-heading*/
+div.panel-heading {
+  font-family: quicksand;
+  font-size: 1.69em;
+  border-radius: 10px;
+}
+
+
+/*panel-body*/
+input#sel1 {
+  width: 180px;
+  padding-left: 50px;
+  background-image: url('../assets/images/searchicon.png');
+  background-position: 8px 5px;
+  background-repeat: no-repeat;
+  -webkit-transition: width 0.8s ease-in-out;
+  transition: width 0.8s ease-in-out;
+}
+
+input#sel1:focus {
+  width: 270px;
+}
+
+/*table*/
+.table-responsive {
+  margin: 0 auto;
+}
+
+.table {
+  background-color: #f0f5f5;
+  max-width: 95%;
+  margin: 0;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+
+/*footer*/
+.footer {
+  background-color: #b3cccc;
+}

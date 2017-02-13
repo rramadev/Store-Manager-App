@@ -22,6 +22,7 @@
                   {{showImage ? "Hide" : "Show"}} Image
               </button>
             </th>
+            <th>Index</th>
             <th>Product</th>
             <th>Code</th>
             <th>Available</th>
@@ -30,10 +31,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products | productFilter:listFilter">
+          <tr *ngFor="let product of products |
+                productFilter:listFilter;
+                let i = index">
             <td>
               <img *ngIf="showImage" [src]="product.imageUrl" [title]="product.productName" [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
             </td>
+            <td>{{ i+1 }}</td>
             <td>
               <a [routerLink]="['/product', product.productId]">
                   {{product.productName}}

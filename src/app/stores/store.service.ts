@@ -16,7 +16,7 @@ export class StoreService {
     constructor(private http: Http) {}
 
     getStores(): Observable<IStore[]> {
-      if(!this.stores) {
+      if (!this.stores) {
         this.stores = this.http.get(this.storeUrl)
           .map((response: Response) => <IStore[]> response.json())
           // .do(data => console.log('All Stores: ' +  JSON.stringify(data)))
