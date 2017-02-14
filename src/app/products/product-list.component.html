@@ -27,7 +27,7 @@
             <th>Code</th>
             <th>Available</th>
             <th>Price</th>
-            <th>5 Star Rating</th>
+            <th>Rating</th>
           </tr>
         </thead>
         <tbody>
@@ -47,9 +47,9 @@
             <td>{{ product.releaseDate }}</td>
             <td>{{ product.price | currency:"USD":true:"1.2-2"}}</td>
             <td>
-              <sm-shared-star
+              <sm-shared-rating
                 [rating]="product.starRating" (ratingClicked)="onRatingClicked($event)">
-              </sm-shared-star>
+              </sm-shared-rating>
             </td>
           </tr>
         </tbody>

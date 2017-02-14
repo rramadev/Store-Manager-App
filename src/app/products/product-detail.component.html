@@ -28,11 +28,11 @@
             <div class="col-md-6">{{product.price|currency:"USD":true}}</div>
           </div>
           <div class="row">
-            <div class="col-md-3">5 Star Rating:</div>
+            <div class="col-md-3">Rating:</div>
             <div class="col-md-6">
-              <sm-shared-star
+              <sm-shared-rating
                 [rating]="product.starRating" (ratingClicked)="onRatingClicked($event)">
-              </sm-shared-star>
+              </sm-shared-rating>
             </div>
           </div>
         </div>

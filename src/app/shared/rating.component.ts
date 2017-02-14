@@ -4,25 +4,25 @@ Output, EventEmitter } from '@angular/core';
 import { LoggerService } from '../core/logger.service';
 
 @Component({
-  selector: 'sm-shared-star',
+  selector: 'sm-shared-rating',
   moduleId: module.id,
-  templateUrl: './star.component.html',
-  styleUrls: ['./star.component.css']
+  templateUrl: './rating.component.html',
+  styleUrls: ['./rating.component.css']
 })
-export class StarComponent implements OnChanges {
+export class RatingComponent implements OnChanges {
   @Input() rating: number;
   @Output() ratingClicked: EventEmitter<string> =
   new EventEmitter<string>();
-  starWidth: number;
+  ratingWidth: number; 
 
   constructor(private loggerService: LoggerService) { }
 
   ngOnChanges(): void {
-    this.starWidth = this.rating * 86 / 5;
+    this.ratingWidth = this.rating * 86 / 5;
   }
 
   onClick(): void {
-    this.loggerService.log('Star clicked [' + this.rating + ']');
+    this.loggerService.log('Rating clicked [' + this.rating + ']');
     this.ratingClicked.emit(`The rating ${this.rating} was clicked!`);
   }
 }
