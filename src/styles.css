@@ -19,6 +19,7 @@
 html, body {
   height: 100%;
   margin: 0;
+  background: #5c8a8a;
 }
 
 html { font-size: 16px; /* Overrides user´s browser settings */ }
@@ -75,9 +76,11 @@ nav.navbar li a {
 /*main*/
 section.main {
   min-width: 100%;
+  min-height: 100%;
   background: url(../assets/images/bg.jpg) no-repeat center fixed;
   background-size: cover;
-  padding: 80px 40px;
+  padding: 80px 0;
+  position: relative;
 }
 
 /*panel*/
@@ -140,8 +143,38 @@ input#sel1:focus {
   margin-bottom: 0;
 }
 
+/*md-grid*/
+.md-grid {
+  margin: 20px;
+}
+
+.md-card-product {
+  cursor: pointer;
+  width: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.md-card-product [id^=product]:first-child {
+  width: 90%;
+  margin: -10px 10px 20px;
+}
+
+.md-card-title-product p:first-child {
+  font-size: 1.2em;
+}
+
+.md-card-buttons {
+  margin-top: 20px;
+}
+
+.md-card-buttons a {
+  margin-right: 20px;
+}
 
 /*footer*/
 .footer {
+  width: 100%;
   background-color: #b3cccc;
+  position: absolute;
+  bottom: 0px;
 }

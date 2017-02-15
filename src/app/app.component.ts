@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
 	selector: 'sm-app',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	pageTitle: string = 'Store Manager';
+	snackBarMsg: string = 'Store Manager App v1.0.0 :: Info@test.com'
+
+	constructor(public snackBar: MdSnackBar) { }
+
+	openSnackBar() {
+		this.snackBar.open(this.snackBarMsg, 'Close', {
+			duration: 3000,
+		});
+	}
 }

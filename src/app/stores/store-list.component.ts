@@ -46,7 +46,8 @@ export class StoreListComponent implements OnInit {
 				this.orderByFilter = 'name';
 				// Set default store image
 				for (let store of this.stores) {
-					store['imageUrl'] = 'https://openclipart.org/download/216947/bread-and-banana02.svg';
+					store['imageUrl'] =
+					 'https://openclipart.org/image/300px/svg_to_png/244855/Online-Store-Spanish-Signs.png';
 				};
 				// Remove duplicated addresses
         // var noDuplicateStores = [];

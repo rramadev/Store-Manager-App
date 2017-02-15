@@ -11,17 +11,17 @@ import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
-        ProductListComponent,
-        ProductDetailComponent,
-        ProductFilterPipe
+      ProductListComponent,
+      ProductDetailComponent,
+      ProductFilterPipe
     ],
     imports: [
       AppRoutingModule,
       SharedModule
     ],
     providers: [
-        ProductService,
-        ProductDetailGuard
+      ProductService,
+      ProductDetailGuard
     ]
 })
 export class ProductModule {}

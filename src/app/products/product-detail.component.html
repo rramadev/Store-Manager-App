@@ -20,12 +20,12 @@
             <div class="col-md-6">{{product.description}}</div>
           </div>
           <div class="row">
-            <div class="col-md-3">Availability:</div>
+            <div class="col-md-3">Released:</div>
             <div class="col-md-6">{{product.releaseDate}}</div>
           </div>
           <div class="row">
             <div class="col-md-3">Price:</div>
-            <div class="col-md-6">{{product.price|currency:"USD":true}}</div>
+            <div class="col-md-6">{{product.price|currency:'EUR':true:"1.2-2"}}</div>
           </div>
           <div class="row">
             <div class="col-md-3">Rating:</div>
@@ -42,11 +42,16 @@
         </div>
       </div>
     </md-card>
-  </div>
-
-  <div class="panel-footer">
-    <a class="btn btn-default" (click)="onBack()" style="width:80px">
-      <i class="glyphicon glyphicon-chevron-left"></i> Back
-    </a>
+    <md-card class="md-card-buttons">
+      <a class="btn btn-default" (click)="onBack()" style="width:80px">
+        <i class="glyphicon glyphicon-chevron-left"></i> Back
+      </a>
+      <a class="btn btn-primary" style="width:80px">
+        <i class="glyphicon glyphicon-edit"></i> Edit
+      </a>
+      <a class="btn btn-danger" style="width:80px">
+        <i class="glyphicon glyphicon-remove"></i> Delete
+      </a>
+    </md-card>
   </div>
 </div>

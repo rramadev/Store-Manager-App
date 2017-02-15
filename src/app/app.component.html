@@ -4,14 +4,15 @@
       <li><a [routerLink]="['/welcome']">Home</a></li>
       <li><a [routerLink]="['/stores']">Store List</a></li>
       <li><a [routerLink]="['/products']">Product List</a></li>
+      <li><a (click)="openSnackBar()">About</a></li>
     </ul>
   </nav>
 </header>
 
 <section class='container main'>
   <router-outlet></router-outlet>
-</section>
 
-<footer>
-  <div class="footer">rramadev - Angular 2 Demo - Store Manager App v1.0.0 &copy; 2017.</div>
-</footer>
+  <footer>
+    <div class="footer">rramadev - Angular 2 Demo - Store Manager App v1.0.0 &copy; 2017.</div>
+  </footer>
+</section>

@@ -10,7 +10,7 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
     "skipLibCheck": true,
-    "types": [ "node", "core-js" ]
+    "types": [ "node", "core-js", "hammerjs" ]
   },
   "exclude": [
     "node_modules"

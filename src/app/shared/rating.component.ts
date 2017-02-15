@@ -13,7 +13,7 @@ export class RatingComponent implements OnChanges {
   @Input() rating: number;
   @Output() ratingClicked: EventEmitter<string> =
   new EventEmitter<string>();
-  ratingWidth: number; 
+  ratingWidth: number;
 
   constructor(private loggerService: LoggerService) { }
 
@@ -23,6 +23,6 @@ export class RatingComponent implements OnChanges {
 
   onClick(): void {
     this.loggerService.log('Rating clicked [' + this.rating + ']');
-    this.ratingClicked.emit(`The rating ${this.rating} was clicked!`);
+    this.ratingClicked.emit(`User rating updated to [${this.rating}]`); 
   }
 }

@@ -1,52 +1,72 @@
 [
     {
         "productId": 1,
-        "productName": "Leaf Rake",
-        "productCode": "GDN-0011",
-        "releaseDate": "March 19, 2016",
-        "description": "Leaf rake with 48-inch wooden handle.",
-        "price": 19.95,
-        "starRating": 3.2,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+        "productName": "Food Big Salad",
+        "productCode": "71300",
+        "releaseDate": "2013-11-23",
+        "description": "This glitch clipart is about food, big, salad.",
+        "price": 15.95,
+        "starRating": 2.2,
+        "imageUrl": "api/products/img/food-big-salad.jpg"
     },
     {
         "productId": 2,
-        "productName": "Garden Cart",
-        "productCode": "GDN-0023",
-        "releaseDate": "March 18, 2016",
-        "description": "15 gallon capacity rolling garden cart",
-        "price": 32.99,
-        "starRating": 4.2,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
+        "productName": "Food Fruit Salad",
+        "productCode": "45842",
+        "releaseDate": "2014-11-23",
+        "description": "This glitch clipart is about food, fruit, salad.",
+        "price": 21.95,
+        "starRating": 4.5,
+        "imageUrl": "api/products/img/food-fruit-salad.jpg"
+    },
+    {
+        "productId": 3,
+        "productName": "Food Obvious Panini",
+        "productCode": "128443",
+        "releaseDate": "2015-11-23",
+        "description": "This glitch clipart is about food, obvious, panini.",
+        "price": 18.95,
+        "starRating": 3.8,
+        "imageUrl": "api/products/img/food-obvious-panini.jpg"
+    },
+    {
+        "productId": 4,
+        "productName": "Food Fancy Cheese",
+        "productCode": "11247",
+        "releaseDate": "2016-11-23",
+        "description": "15-inch steel blade hand saw",
+        "price": 10.95,
+        "starRating": 2.7,
+        "imageUrl": "api/products/img/food-fancy-cheese.jpg"
     },
     {
         "productId": 5,
-        "productName": "Hammer",
-        "productCode": "TBX-0048",
-        "releaseDate": "May 21, 2016",
-        "description": "Curved claw steel hammer",
-        "price": 8.9,
+        "productName": "Fast Food Menu",
+        "productCode": "135029",
+        "releaseDate": "2011-07-19",
+        "description": "Standard fast food menu",
+        "price": 15.95,
+        "starRating": 3.5,
+        "imageUrl": "api/products/img/fast-food-menu.jpg"
+    },
+    {
+        "productId": 6,
+        "productName": "Food Snack Pack",
+        "productCode": "59273",
+        "releaseDate": "2011-07-19",
+        "description": "Standard food Snack Pack",
+        "price": 12.95,
+        "starRating": 4.5,
+        "imageUrl": "api/products/img/food-snack-pack.jpg"
+    },
+    {
+        "productId": 7,
+        "productName": "Sushi Food",
+        "productCode": "125029",
+        "releaseDate": "2011-07-19",
+        "description": "Standard shushi food",
+        "price": 25.95,
         "starRating": 4.8,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
-    },
-    {
-        "productId": 8,
-        "productName": "Saw",
-        "productCode": "TBX-0022",
-        "releaseDate": "May 15, 2016",
-        "description": "15-inch steel blade hand saw",
-        "price": 11.55,
-        "starRating": 3.7,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/27070/egore911_saw.png"
-    },
-    {
-        "productId": 10,
-        "productName": "Video Game Controller",
-        "productCode": "GMG-0042",
-        "releaseDate": "October 15, 2015",
-        "description": "Standard two-button video game controller",
-        "price": 35.95,
-        "starRating": 4.6,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
+        "imageUrl": "api/products/img/osechi.jpg"
     }
 ]
