@@ -1,6 +1,6 @@
 import { NgModule }  from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule, MdSnackBar } from '@angular/material';
 
 import { RatingComponent } from './rating.component';
@@ -13,10 +13,11 @@ import { RatingComponent } from './rating.component';
 	exports: [
 		CommonModule,
 		FormsModule,
+		ReactiveFormsModule,
 		MaterialModule,
 		RatingComponent
 	],
-	providers: [		
+	providers: [
 		MdSnackBar
 	]
 })

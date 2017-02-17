@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent }  from './app.component';
-import { WelcomeComponent } from './home/welcome.component';
-import { ProductModule } from './products/product.module';
-import { StoreModule } from './stores/store.module';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { ProductModule } from './products/product.module';
+import { StoreModule } from './stores/store.module';
+import { AppComponent }  from './app.component';
+import { WelcomeComponent } from './home/welcome.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +19,10 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
-    ProductModule,
-    StoreModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    ProductModule,
+    StoreModule
   ],
   bootstrap: [ AppComponent ]
 })

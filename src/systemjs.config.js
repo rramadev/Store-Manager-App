@@ -24,14 +24,18 @@
       '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
 
       // other libraries
-      'rxjs':                      'npm:rxjs'
+      'rxjs': 'npm:rxjs',
+      'ng2-ui': 'npm:ng2-ui/dist/ng2-ui.umd.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
         defaultExtension: 'js'
       },
-      rxjs: {
+      'rxjs': {
+        defaultExtension: 'js'
+      },
+      'ng2-ui': {
         defaultExtension: 'js'
       }
     }

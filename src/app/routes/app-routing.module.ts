@@ -12,8 +12,8 @@ const appRoutes: Routes = [
   { path: 'stores', component: StoreListComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'product/:id',
-    canActivate: [ ProductDetailGuard ],
-    component: ProductDetailComponent },
+      canActivate: [ ProductDetailGuard ],
+      component: ProductDetailComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
   // , { useHash: true })]

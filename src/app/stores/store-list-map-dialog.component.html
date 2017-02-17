@@ -1,0 +1,16 @@
+<div md-dialog-title class="md-dialog-title-store">
+  Store Location:
+  <a class="btn btn-warning btn-sm" style="width:80px"
+  (click)="dialogRef.close()">
+    <i class="glyphicon glyphicon-remove"></i> Close
+  </a>
+</div>
+
+<md-dialog-content class="md-dialog-content-store">
+  <md-card>
+    <ng2-map center="{{address}}">
+      <marker position="{{address}}" draggable="true" (click)="onMarker($event)"></marker>
+      <info-window id="iw">Store: [[name]]</info-window>
+    </ng2-map>
+  </md-card>
+</md-dialog-content>

@@ -1,0 +1,31 @@
+<div md-dialog-title>
+  Edit Product Details:
+</div>
+
+<md-dialog-content>
+  <md-card>
+    <md-input-container class="md-input-container-product">
+      <input mdInput placeholder="Name" [(ngModel)]="editProduct.productName">
+    </md-input-container>
+    <md-input-container class="md-input-container-product">
+      <textarea mdInput placeholder="Description" [(ngModel)]="editProduct.description">
+      </textarea>
+    </md-input-container>
+    <md-input-container class="md-input-container-product">
+      <input mdInput placeholder="Price €" [(ngModel)]="editProduct.price">
+    </md-input-container>
+    Rating [{{editProduct.starRating | number : '1.1-1'}}]
+    <md-slider [min]="0" [max]="5" [step]="0.1" [thumb-label]="true" [(ngModel)]="editProduct.starRating">
+    </md-slider>
+  </md-card>
+</md-dialog-content>
+
+<md-dialog-actions class="md-dialog-actions-product">
+  <a class="btn btn-success" style="width:80px" (click)="dialogRef.close(this.editProduct)">
+    <i class="glyphicon glyphicon-edit"></i> Save
+  </a>
+  <a class="btn btn-danger" style="width:80px"
+  (click)="dialogRef.close('cancel')">
+    <i class="glyphicon glyphicon-remove"></i> Cancel
+  </a>
+</md-dialog-actions>

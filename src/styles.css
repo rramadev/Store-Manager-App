@@ -73,6 +73,10 @@ nav.navbar li a {
   background-color: #b3cccc;
 }
 
+nav.navbar li a#about {
+  cursor: pointer;
+}
+
 /*main*/
 section.main {
   min-width: 100%;
@@ -118,6 +122,10 @@ input#sel1 {
 
 input#sel1:focus {
   width: 270px;
+}
+
+select#sel3 {
+  max-width: 200px;
 }
 
 /*table*/
@@ -169,6 +177,24 @@ input#sel1:focus {
 
 .md-card-buttons a {
   margin-right: 20px;
+}
+
+/*dialog*/
+.mat-input-container.md-input-container-product {
+  display: block;
+  min-width: 300px;
+  margin-top: 40px;
+}
+
+.md-dialog-actions-product a {
+  margin-right: 20px;
+}
+
+.md-dialog-content-store {
+  min-width: 600px;
+}
+.md-dialog-title-store a {
+  float: right;
 }
 
 /*footer*/

@@ -4,7 +4,7 @@
       <li><a [routerLink]="['/welcome']">Home</a></li>
       <li><a [routerLink]="['/stores']">Store List</a></li>
       <li><a [routerLink]="['/products']">Product List</a></li>
-      <li><a (click)="openSnackBar()">About</a></li>
+      <li><a id="about" (click)="openSnackBar()">About</a></li>
     </ul>
   </nav>
 </header>
@@ -13,6 +13,8 @@
   <router-outlet></router-outlet>
 
   <footer>
-    <div class="footer">rramadev - Angular 2 Demo - Store Manager App v1.0.0 &copy; 2017.</div>
+    <div class="footer">
+      rramadev - Angular 2 Demo - Store Manager App v1.0.0 &copy; 2017.
+    </div>
   </footer>
 </section>

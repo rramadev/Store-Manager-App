@@ -8,12 +8,12 @@ import { MdSnackBar } from '@angular/material';
 })
 export class AppComponent {
 	pageTitle: string = 'Store Manager';
-	snackBarMsg: string = 'Store Manager App v1.0.0 :: Info@test.com'
+	snackBarMsg: string = 'Store Manager App v1.0.0 | About@demo-app.com'
 
 	constructor(public snackBar: MdSnackBar) { }
 
 	openSnackBar() {
-		this.snackBar.open(this.snackBarMsg, 'Close', {
+		this.snackBar.open(this.snackBarMsg, '| Close', {
 			duration: 3000,
 		});
 	}

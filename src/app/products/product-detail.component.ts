@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { MdDialog } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
 import { IProduct } from './product.model';
 import { ProductService } from './product.service';
+import { ProductDetailDialogComponent } from './product-detail-dialog.component';
+import { LoggerService } from '../core/logger.service';
 
 @Component({
 	moduleId: module.id,
@@ -19,11 +21,11 @@ export class ProductDetailComponent implements OnInit {
 
 	constructor(private route: ActivatedRoute,
 							private router: Router,
-						  private productService: ProductService) {	}
+						  private productService: ProductService,
+							public dialog: MdDialog,
+							private loggerService: LoggerService) {	}
 
 	ngOnInit(): void {
-		// let id = +this.route.snapshot.params['id'];
-		// this.pageTitle += `: ${id}`;
 		this.subcription = this.route.params.subscribe(
 			params => {
 				let id = +params['id'];
@@ -44,4 +46,14 @@ export class ProductDetailComponent implements OnInit {
 	onRatingClicked(message: string): void {
 		this.pageTitle = 'Product Detail: ' + message;
 	}
+
+	openDialog(): void {
+    let dialogRef = this.dialog.open(ProductDetailDialogComponent);
+		dialogRef.componentInstance.product = this.product;
+    dialogRef.afterClosed().subscribe(result => {
+			(typeof result === 'object') ?
+				this.product = Object.assign({}, result)
+				: this.loggerService.log('Product Edit Dialog cancelled');
+    });
+  }
 }

@@ -36,5 +36,4 @@ export class ProductService {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }
-
 }
