@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MdDialog } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
-import { IProduct } from './product.model';
-import { ProductService } from './product.service';
 import { ProductDetailDialogComponent } from './product-detail-dialog.component';
+import { ProductService } from './product.service';
 import { LoggerService } from '../core/logger.service';
+
+import { IProduct } from './product.model';
 
 @Component({
 	moduleId: module.id,
@@ -14,9 +15,14 @@ import { LoggerService } from '../core/logger.service';
 	styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-	pageTitle: string = 'Product Detail';
+	pageTitle: string = '';
+	errorMessage: string = '';
+	showBar: boolean = false;
+	updated: boolean = false;
+	updateMessage: string = ' - Updated!';
+	deleted: boolean = false;
+	deleteMessage: string = ' - Deleted!';
 	product: IProduct;
-	errorMessage: string;
 	private subcription: Subscription;
 
 	constructor(private route: ActivatedRoute,
@@ -25,6 +31,62 @@ export class ProductDetailComponent implements OnInit {
 							public dialog: MdDialog,
 							private loggerService: LoggerService) {	}
 
+	onBack(): void {
+		this.router.navigate(['/products']);
+	}
+
+	onRatingClicked(message: string): void {
+		this.setTitle(message);
+	}
+
+	setTitle(message = ''): void {
+		this.pageTitle = `Product Detail: ${this.product.productName} ${message}`;
+	}
+
+	openDialog(): void {
+		this.updated = false;
+    let dialogRef = this.dialog.open(ProductDetailDialogComponent);
+		dialogRef.componentInstance.product = this.product;
+    dialogRef.afterClosed().subscribe(result => {
+			(typeof result === 'object') ? (
+				this.showBar = true,
+				this.updateProduct(result))
+				: this.updated = false;
+    });
+  }
+
+	getProduct(id: number) {
+		this.productService.getProduct(id).subscribe(
+			product => {
+				this.product = product;
+				this.setTitle();
+			},
+			error => this.errorMessage = <any>error);
+	}
+
+	updateProduct(product: IProduct) {
+		this.productService.updateProduct(product).subscribe(
+			result => {
+				this.product = Object.assign({}, product);
+				this.showBar = false;
+				this.updated = true;
+			},
+			error => this.errorMessage = <any>error);
+	}
+
+	deleteProduct(id: number) {
+		this.updated = false;
+		this.showBar = true;
+		this.productService.deleteProduct(id).subscribe(
+			result => {
+				// this.product = undefined;
+				this.showBar = false;
+				this.deleted = true;
+				this.setTitle();
+			},
+			error => this.errorMessage = <any>error);
+	}
+
 	ngOnInit(): void {
 		this.subcription = this.route.params.subscribe(
 			params => {
@@ -32,28 +94,4 @@ export class ProductDetailComponent implements OnInit {
 				this.getProduct(id);
 			});
 	}
-
-	getProduct(id: number) {
-		this.productService.getProduct(id).subscribe(
-			product => this.product = product,
-			error => this.errorMessage = <any>error);
-	}
-
-	onBack(): void {
-		this.router.navigate(['/products']);
-	}
-
-	onRatingClicked(message: string): void {
-		this.pageTitle = 'Product Detail: ' + message;
-	}
-
-	openDialog(): void {
-    let dialogRef = this.dialog.open(ProductDetailDialogComponent);
-		dialogRef.componentInstance.product = this.product;
-    dialogRef.afterClosed().subscribe(result => {
-			(typeof result === 'object') ?
-				this.product = Object.assign({}, result)
-				: this.loggerService.log('Product Edit Dialog cancelled');
-    });
-  }
 }

@@ -16,7 +16,7 @@ export class StoreListComponent implements OnInit {
 	pageTitle: string = 'Store List';
 	imageWidth: number = 70;
 	imageMargin: number = 2;
-	showImage: boolean = false;
+	showImage: boolean = true;
 	storeFilterFields: string[];
 	storeNoDuplicateFilter: string = 'address';
 	placeholderFilter: string = 'Looking for...';

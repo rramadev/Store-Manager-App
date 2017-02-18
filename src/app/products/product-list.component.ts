@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { IProduct } from './product.model';
 import { ProductService } from './product.service';
+
+import { IProduct } from './product.model';
 
 @Component({
 	moduleId: module.id,
@@ -29,13 +30,17 @@ export class ProductListComponent implements OnInit {
 		this.showImage = !this.showImage;
 	}
 
-	ngOnInit(): void {
+	onRatingClicked(message: string): void {
+		this.pageTitle = 'Product List: ' + message;
+	}
+
+	getProducts() {
 		this.productService.getProducts().subscribe(
 			products => this.products = products,
 			error => this.errorMessage = <any>error);
 	}
 
-	onRatingClicked(message: string): void {
-		this.pageTitle = 'Product List: ' + message;
+	ngOnInit(): void {
+		this.getProducts();
 	}
 }

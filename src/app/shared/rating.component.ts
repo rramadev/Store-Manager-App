@@ -23,6 +23,6 @@ export class RatingComponent implements OnChanges {
 
   onClick(): void {
     this.loggerService.log('Rating clicked [' + this.rating + ']');
-    this.ratingClicked.emit(`User rating updated to [${this.rating}]`); 
+    this.ratingClicked.emit(`User rating is up to [${this.rating}]`); 
   }
 }

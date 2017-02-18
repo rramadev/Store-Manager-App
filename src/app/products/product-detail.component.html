@@ -1,10 +1,19 @@
 <div class="panel panel-primary" *ngIf="product">
   <div class="panel-heading" style="font-size:large">
-    {{pageTitle + ": " + product.productName}}
+    {{pageTitle}}
+    <md-progress-bar *ngIf="showBar" color="accent" mode="indeterminate"></md-progress-bar>
+    <span *ngIf="updated" class="updated">
+       {{updateMessage}}
+      <span class="glyphicon glyphicon-ok-circle"></span>
+    </span>
+    <span *ngIf="deleted" class="deleted">
+       {{deleteMessage}}
+      <span class="glyphicon glyphicon-remove-circle"></span>
+    </span>
   </div>
 
   <div class="panel-body">
-    <md-card>
+    <md-card *ngIf="!deleted">
       <div class="row">
         <div class="col-md-6">
           <div class="row">
@@ -46,10 +55,10 @@
       <a class="btn btn-default" (click)="onBack()" style="width:80px">
         <i class="glyphicon glyphicon-chevron-left"></i> Back
       </a>
-      <a class="btn btn-primary" style="width:80px" (click)="openDialog()">
+      <a class="btn btn-primary" style="width:80px" (click)="openDialog()" *ngIf="!deleted">
         <i class="glyphicon glyphicon-edit"></i> Edit
       </a>
-      <a class="btn btn-danger" style="width:80px">
+      <a class="btn btn-danger" style="width:80px" (click)="deleteProduct(product.id)" *ngIf="!deleted">
         <i class="glyphicon glyphicon-remove"></i> Delete
       </a>
     </md-card>

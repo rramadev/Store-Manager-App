@@ -21,7 +21,7 @@
         [colspan]="1"
         [rowspan]="1">
 
-        <md-card class="md-card-product" [routerLink]="['/product', product.productId]">
+        <md-card class="md-card-product" [routerLink]="['/product', product.id]">
           <img md-card-image id="product{{i}}" [src]="product.imageUrl" [title]="product.productName">
           <md-card-header>
             <md-card-title class="md-card-title-product">
@@ -72,7 +72,7 @@
             </td>
             <td>{{ i+1 }}</td>
             <td>
-              <a [routerLink]="['/product', product.productId]">
+              <a [routerLink]="['/product', product.id]">
                   {{product.productName}}
               </a>
             </td>

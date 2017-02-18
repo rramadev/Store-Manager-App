@@ -39,6 +39,7 @@
     "@types/google-maps": "^3.2.0",
     "@types/hammerjs": "^2.0.34",
     "@types/node": "^7.0.5",
+    "angular-in-memory-web-api": "^0.2.4",
     "body-parser": "^1.16.1",
     "codelyzer": "^2.0.0",
     "colors": "^1.1.2",
