@@ -14,9 +14,10 @@ import { StoreListMapDialogComponent } from './store-list-map-dialog.component';
 })
 export class StoreListComponent implements OnInit {
 	pageTitle: string = 'Store List';
-	imageWidth: number = 70;
+	imageWidth: number = 60;
 	imageMargin: number = 2;
 	showImage: boolean = true;
+	showTools: boolean = true;
 	storeFilterFields: string[];
 	storeNoDuplicateFilter: string = 'address';
 	placeholderFilter: string = 'Looking for...';
@@ -45,14 +46,19 @@ export class StoreListComponent implements OnInit {
 
 	constructor(private _storeService: StoreService,
 							public dialog: MdDialog) {
-		this.cityCtrl = new FormControl();
-    this.filteredCities = this.cityCtrl.valueChanges
-        .startWith(null)
-        .map(name => this.filterCitiesInput(name));
+		this.startCityCtrl();
 	}
 
-	filterCitiesInput(val: string) {
-    return val ? this.cityList.filter((s) => new RegExp(val, 'gi').test(s))
+	startCityCtrl(): void {
+		this.cityCtrl = new FormControl();
+    this.filteredCities = this.cityCtrl.valueChanges
+      .startWith(null)
+      .map(name => this.filterCitiesInput(name));
+	}
+
+	filterCitiesInput(val: string): string[] {
+    return val ?
+			this.cityList.filter((s) => new RegExp(val, 'gi').test(s))
 			: this.cityList;
   }
 
@@ -62,7 +68,7 @@ export class StoreListComponent implements OnInit {
 			this.storeFilterMsg = '- Filtered by: ',
 			this.storeFilterInput = input,
 			this.storeFilterFields = ['name', 'address']
-		) : (
+			) : (
 			this.cityFilterInput = '',
 			this.storeFilterMsg = '- Filtered by city: ',
 			this.storeFilterInput = this.cityCtrl.value,
@@ -117,6 +123,19 @@ export class StoreListComponent implements OnInit {
 						: false;
 				});
 				this.stores = noDuplicateStores.slice();
+
+				// Filter JSON by fields
+				// let filteredObject = {},
+				// filteredArray = [],
+	    	// p = new Set(Object.keys(this.stores[0])),
+	    	// blacklist: string[] = ['styleUrl', 'ExtendedData'];
+				// blacklist.forEach(a => p.delete(a));
+				// for (var i in this.stores) {
+				// 	p.forEach(k => filteredObject[k] = this.stores[i][k]);
+				// 	filteredArray.push(filteredObject);
+				// 	filteredObject = {};
+				// }
+				// console.log(JSON.stringify(filteredArray));
       }
 		);
 		// subscription.unsubscribe();

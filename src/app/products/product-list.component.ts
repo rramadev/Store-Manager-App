@@ -13,6 +13,8 @@ export class ProductListComponent implements OnInit {
 	pageTitle: string = 'Product List';
 	imageWidth: number = 70;
 	imageMargin: number = 2;
+	gridRows: number = 2;
+	gridRatio: string = '3:3';
 	showImage: boolean = false;
 	placeholderFilter: string = 'Introduce a filter...';
 	listFilter: string = '';
@@ -21,6 +23,20 @@ export class ProductListComponent implements OnInit {
 	products: IProduct[];
 
 	constructor(private productService: ProductService) { }
+
+	onResize(width: number): void {
+		this.gridRows = width > 1300 ? 3
+											: width > 900 ? 2
+												: 1;
+		this.gridRatio = width > 1300 ? '3:3'
+											: width > 1150 ? '4:3'
+												: width > 900 ? '3:3'
+													: '4:3';
+  }
+
+	getWindowWidth(): number {
+		return window.innerWidth;
+	}
 
 	displayFilter(): string {
 		return '- Filtered by: ' + this.listFilter;
@@ -42,5 +58,6 @@ export class ProductListComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.getProducts();
+		this.onResize(this.getWindowWidth());
 	}
 }

@@ -10,7 +10,8 @@ import { IStore } from './store.model';
 
 @Injectable()
 export class StoreService {
-    private storeUrl = 'api/products/stores.json';
+    // private storeUrl = 'api/products/stores.json';
+    private storeUrl = 'api/stores';
     private stores: Observable<IStore[]> = null;
 
     constructor(private http: Http) {}
@@ -18,7 +19,7 @@ export class StoreService {
     getStores(): Observable<IStore[]> {
       if (!this.stores) {
         this.stores = this.http.get(this.storeUrl)
-          .map((response: Response) => <IStore[]> response.json())
+          .map((response: Response) => <IStore[]> response.json().data)
           // .do(data => console.log('All Stores: ' +  JSON.stringify(data)))
           .publishReplay(1)
           .refCount()

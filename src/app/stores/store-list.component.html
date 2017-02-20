@@ -34,13 +34,15 @@
           <tr>
             <th>
               <button class="btn btn-primary btn-sm" (click)="toggleImage()">
-                  {{showImage ? "Hide" : "Show"}} Image
+                {{showImage ? "Hide" : "Show"}} Image
               </button>
             </th>
             <th>Index</th>
             <th>Store</th>
             <th>Address</th>
-            <th></th>
+            <th>
+              <md-slide-toggle class="md-slide-toggle-store" [(ngModel)]="showTools">
+              </md-slide-toggle>
           </tr>
         </thead>
         <tbody>
@@ -54,9 +56,32 @@
             <td>{{ store.name }}</td>
             <td>{{ store.address }}</td>
             <td>
-              <a href="#" class="btn btn-info btn-sm" (click)="$event.preventDefault(); openDialog(store.address, store.name)">
-                <span class="glyphicon glyphicon-map-marker"></span> Map
-              </a>
+              <div *ngIf="showTools">
+                <div class="showTools">
+                <a href="#" class="btn btn-info btn-sm" (click)="$event.preventDefault(); openDialog(store.address, store.name)">
+                  <span class="glyphicon glyphicon-map-marker"></span> Map
+                </a>
+                </div>
+                <div class="showTools">
+                <button md-icon-button [mdMenuTriggerFor]="menu">
+                  <md-icon>more_vert</md-icon>
+                </button>
+                <md-menu #menu="mdMenu">
+                  <button md-menu-item>
+                    <md-icon>border_color</md-icon>
+                    <span>Edit</span>
+                  </button>
+                  <button md-menu-item>
+                    <md-icon>delete</md-icon>
+                    <span>Delete</span>
+                  </button>
+                  <button md-menu-item disabled>
+                    <md-icon>build</md-icon>
+                    <span>Config</span>
+                  </button>
+                </md-menu>
+                </div>
+              </div>
             </td>
           </tr>
         </tbody>

@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-primary" (window:resize)="onResize($event.target.innerWidth)">
   <div class="panel-heading">
     {{pageTitle}} <span *ngIf="listFilter.length"> {{displayFilter()}}</span>
   </div>
@@ -13,7 +13,19 @@
       </div>
     </md-card>
 
-    <md-grid-list class="md-grid" cols="3" rowHeight="3:4" gutterSize="15px"  *ngIf="products && products.length">
+    <md-card *ngIf="products && (
+                    (!products.length) ||
+                    ((products | productFilter:listFilter).length ===0)
+                    )" class="results">
+      <div class="row">
+        <div class="col-md-12">
+          <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+          No results found
+        </div>
+      </div>
+    </md-card>
+
+    <md-grid-list *ngIf="products && products.length" class="md-grid-list-product" [cols]="gridRows" [rowHeight]="gridRatio" gutterSize="15px"  >
       <md-grid-tile
         *ngFor="let product of products |
           productFilter:listFilter;
@@ -35,7 +47,7 @@
               </md-chip-list>
             </md-card-title>
           </md-card-header>
-          <md-card-content>
+          <md-card-content class="md-card-content-product">
             <sm-shared-rating
               [rating]="product.starRating" (ratingClicked)="onRatingClicked($event)">
             </sm-shared-rating>
