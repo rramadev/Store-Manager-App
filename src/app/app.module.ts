@@ -8,9 +8,6 @@ import { SharedModule } from './shared/shared.module';
 import { ProductModule } from './products/product.module';
 import { StoreModule } from './stores/store.module';
 
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './core/in-memory-data.service';
-
 import { AppComponent }  from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 
@@ -21,8 +18,7 @@ import { WelcomeComponent } from './home/welcome.component';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    HttpModule,    
     AppRoutingModule,
     CoreModule,
     SharedModule,

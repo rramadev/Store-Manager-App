@@ -44,7 +44,7 @@ export class StoreListComponent implements OnInit {
 
 	stores: IStore[];
 
-	constructor(private _storeService: StoreService,
+	constructor(private storeService: StoreService,
 							public dialog: MdDialog) {
 		this.startCityCtrl();
 	}
@@ -84,25 +84,18 @@ export class StoreListComponent implements OnInit {
 		this.showImage = !this.showImage;
 	}
 
-	openDialog(address: string, name: string): void {
-    let dialogRef = this.dialog.open(StoreListMapDialogComponent);
-		dialogRef.componentInstance.address = address;
-		dialogRef.componentInstance.name = name;
-		//dialogRef.afterClosed().subscribe(result => { });
-  }
-
-	ngOnInit(): void {
-		this._storeService.getStores().subscribe(
+	getStores(): void {
+		this.storeService.getStores().subscribe(
 			stores => this.stores = stores,
       error => this.errorMessage = <any>error,
       () => {
 				// Set default filter
 				this.orderByFilter = 'name';
 				// Set default store image
-				for (let store of this.stores) {
-					store['imageUrl'] =
-					 'https://openclipart.org/image/300px/svg_to_png/244855/Online-Store-Spanish-Signs.png';
-				};
+				// for (let store of this.stores) {
+				// 	store['imageUrl'] =
+				// 	 'https://openclipart.org/image/300px/svg_to_png/244855/Online-Store-Spanish-Signs.png';
+				// };
 				// Remove duplicated addresses
         // var noDuplicateStores = [];
         // var addresses = [];
@@ -131,6 +124,7 @@ export class StoreListComponent implements OnInit {
 	    	// blacklist: string[] = ['styleUrl', 'ExtendedData'];
 				// blacklist.forEach(a => p.delete(a));
 				// for (var i in this.stores) {
+				// 	filteredObject['id'] = i;
 				// 	p.forEach(k => filteredObject[k] = this.stores[i][k]);
 				// 	filteredArray.push(filteredObject);
 				// 	filteredObject = {};
@@ -139,5 +133,26 @@ export class StoreListComponent implements OnInit {
       }
 		);
 		// subscription.unsubscribe();
+	}
+
+	deleteStore(id: number) {
+		this.storeService.deleteStore(id).subscribe(
+			result => {
+				// this.getStores();
+				let newStores = this.stores.filter(store => store.id !== id);
+				this.stores = JSON.parse(JSON.stringify(newStores));
+			},
+			error => this.errorMessage = <any>error);
+	}
+
+	openDialog(address: string, name: string): void {
+    let dialogRef = this.dialog.open(StoreListMapDialogComponent);
+		dialogRef.componentInstance.address = address;
+		dialogRef.componentInstance.name = name;
+		//dialogRef.afterClosed().subscribe(result => { });
+  }
+
+	ngOnInit(): void {
+		this.getStores();
 	}
 }

@@ -5,14 +5,14 @@
 <md-dialog-content>
   <md-card>
     <md-input-container class="md-input-container-product">
-      <input mdInput placeholder="Name" [(ngModel)]="editProduct.productName">
+      <input mdInput #name="ngModel" placeholder="Name" [(ngModel)]="editProduct.productName" required>
     </md-input-container>
     <md-input-container class="md-input-container-product">
-      <textarea mdInput placeholder="Description" [(ngModel)]="editProduct.description">
+      <textarea mdInput id="description" placeholder="Description" [(ngModel)]="editProduct.description">
       </textarea>
     </md-input-container>
     <md-input-container class="md-input-container-product">
-      <input mdInput placeholder="Price €" [(ngModel)]="editProduct.price">
+      <input mdInput #price="ngModel" placeholder="Price €" [(ngModel)]="editProduct.price" required>
     </md-input-container>
     Rating [{{editProduct.starRating | number : '1.1-1'}}]
     <md-slider [min]="0" [max]="5" [step]="0.1" [thumb-label]="true" [(ngModel)]="editProduct.starRating">
@@ -21,11 +21,12 @@
 </md-dialog-content>
 
 <md-dialog-actions class="md-dialog-actions-product">
-  <a class="btn btn-success" style="width:80px" (click)="dialogRef.close(this.editProduct)">
+  <button type="button" class="btn btn-success" style="width:80px" (click)="dialogRef.close(this.editProduct)"
+  [disabled]="!name.valid || !price.valid">
     <i class="glyphicon glyphicon-edit"></i> Save
-  </a>
-  <a class="btn btn-danger" style="width:80px"
+  </button>
+  <button type="button" class="btn btn-danger" style="width:80px"
   (click)="dialogRef.close('cancel')">
     <i class="glyphicon glyphicon-remove"></i> Cancel
-  </a>
+  </button>
 </md-dialog-actions>
