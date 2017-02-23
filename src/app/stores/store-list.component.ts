@@ -116,7 +116,6 @@ export class StoreListComponent implements OnInit {
 						: false;
 				});
 				this.stores = noDuplicateStores.slice();
-
 				// Filter JSON by fields
 				// let filteredObject = {},
 				// filteredArray = [],
@@ -130,17 +129,26 @@ export class StoreListComponent implements OnInit {
 				// 	filteredObject = {};
 				// }
 				// console.log(JSON.stringify(filteredArray));
+				// Create Cities List
+				// let citiesList = this.stores.reduce((acc,curr) => {
+				// 	let posi = curr.description.indexOf('- Stadt:') + 9;
+				// 	let posf = curr.description.indexOf('<br>Adresse - Staat');
+				// 	let city = curr.description.substring(posi, posf);
+				// 	if (acc.indexOf(city)===-1) {
+				// 		acc.push(city);
+				// 	}
+				// 	return acc;
+				// }, []);
       }
 		);
-		// subscription.unsubscribe();
 	}
 
 	deleteStore(id: number) {
 		this.storeService.deleteStore(id).subscribe(
 			result => {
-				// this.getStores();
-				let newStores = this.stores.filter(store => store.id !== id);
-				this.stores = JSON.parse(JSON.stringify(newStores));
+				this.getStores();
+				// let updatedStores = this.stores.filter(store => store.id !== id);
+				// this.stores = JSON.parse(JSON.stringify(updatedStores));
 			},
 			error => this.errorMessage = <any>error);
 	}
@@ -149,7 +157,6 @@ export class StoreListComponent implements OnInit {
     let dialogRef = this.dialog.open(StoreListMapDialogComponent);
 		dialogRef.componentInstance.address = address;
 		dialogRef.componentInstance.name = name;
-		//dialogRef.afterClosed().subscribe(result => { });
   }
 
 	ngOnInit(): void {

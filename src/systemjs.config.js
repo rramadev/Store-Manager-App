@@ -1,5 +1,5 @@
 /**
- * System configuration for Angular 2
+ * System configuration for Angular 2 Demo - Store Manager App
  */
 (function (global) {
   System.config({

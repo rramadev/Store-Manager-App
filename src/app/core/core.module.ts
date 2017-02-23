@@ -9,7 +9,7 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 @NgModule({
 	declarations: [],
 	imports: [
-		InMemoryWebApiModule.forRoot(InMemoryDataService)
+		InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 300 })
 	],
 	exports: [],
   providers: [

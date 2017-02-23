@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule, MdSnackBar } from '@angular/material';
 
-import { RatingComponent } from './rating.component';
+import { RatingComponent } from './rating.component';  
 
 @NgModule({
 	declarations: [RatingComponent],
