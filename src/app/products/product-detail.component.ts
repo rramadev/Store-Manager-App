@@ -71,7 +71,10 @@ export class ProductDetailComponent implements OnInit {
 				this.showBar = false;
 				this.updated = true;
 			},
-			error => this.errorMessage = <any>error);
+			error => {
+				this.errorMessage = <any>error;
+				this.showBar = false;
+			});
 	}
 
 	deleteProduct(id: number) {

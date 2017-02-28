@@ -123,7 +123,7 @@ md-card.results {
 }
 
 input#sel1 {
-  width: 180px;
+  width: 150px;
   padding-left: 50px;
   background-image: url('../assets/images/searchicon.png');
   background-position: 8px 5px;
@@ -133,11 +133,11 @@ input#sel1 {
 }
 
 input#sel1:focus {
-  width: 270px;
+  width: 220px;
 }
 
 select#sel3 {
-  max-width: 200px;
+  max-width: 150px;
 }
 
 /*table*/

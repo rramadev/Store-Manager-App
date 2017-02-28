@@ -18,13 +18,18 @@ export class StoreListComponent implements OnInit {
 	imageMargin: number = 2;
 	showImage: boolean = true;
 	showTools: boolean = true;
+	showBar: boolean = false;
+	updated: boolean = false;
+	updateMessage: string = ' - Store Updated!';
+	deleted: boolean = false;
+	deleteMessage: string = ' - Store Deleted!';
 	storeFilterFields: string[];
 	storeNoDuplicateFilter: string = 'address';
 	placeholderFilter: string = 'Looking for...';
 	errorMessage: string = '';
 	storeFilterInput: string = '';
 	storeFilterMsg: string = '';
-	orderByFilter: string = '';
+	orderByFilter: string = 'name';
 	cityFilterInput: string = '';
 
 	cityCtrl: FormControl;
@@ -89,8 +94,12 @@ export class StoreListComponent implements OnInit {
 			stores => this.stores = stores,
       error => this.errorMessage = <any>error,
       () => {
+				if (this.showBar) {
+					this.showBar = false;
+					this.deleted = true;
+				};
 				// Set default filter
-				this.orderByFilter = 'name';
+				// this.orderByFilter = 'name';
 				// Set default store image
 				// for (let store of this.stores) {
 				// 	store['imageUrl'] =
@@ -144,13 +153,18 @@ export class StoreListComponent implements OnInit {
 	}
 
 	deleteStore(id: number) {
+		this.showBar = true;
+		this.deleted = false;
 		this.storeService.deleteStore(id).subscribe(
 			result => {
 				this.getStores();
 				// let updatedStores = this.stores.filter(store => store.id !== id);
 				// this.stores = JSON.parse(JSON.stringify(updatedStores));
 			},
-			error => this.errorMessage = <any>error);
+			error => {
+				this.errorMessage = <any>error;
+				this.showBar = false;
+			});
 	}
 
 	openDialog(address: string, name: string): void {

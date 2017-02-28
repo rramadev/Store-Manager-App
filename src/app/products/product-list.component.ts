@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
 	gridRows: number = 2;
 	gridRatio: string = '3:3';
 	showImage: boolean = false;
-	placeholderFilter: string = 'Introduce a filter...';
+	placeholderFilter: string = 'Looking for...';
 	listFilter: string = '';
 	errorMessage: string = '';
 
