@@ -18,12 +18,12 @@ import { WelcomeComponent } from './home/welcome.component';
   ],
   imports: [
     BrowserModule,
-    HttpModule,    
-    AppRoutingModule,
+    HttpModule,
     CoreModule,
     SharedModule,
     ProductModule,
-    StoreModule
+    StoreModule,
+    AppRoutingModule
   ],
   bootstrap: [ AppComponent ]
 })

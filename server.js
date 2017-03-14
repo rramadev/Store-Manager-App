@@ -16,5 +16,5 @@ app.get('*', function(req, res) {
 });
 
 app.listen(app.get('port'), function() {
-  console.log('Express-Server: Store-Manager app is running on port', app.get('port'));
+  console.log('Express-Server: Store-Manager-App is running on port', app.get('port'));
 });

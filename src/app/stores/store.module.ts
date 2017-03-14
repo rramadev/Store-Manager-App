@@ -20,7 +20,6 @@ import { StoreService } from './store.service';
     StoreOrderByFilterPipe
   ],
   imports: [
-    AppRoutingModule,
     SharedModule,
     Ng2MapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyB53S10hi3txW2AQX1MqPS0yFsT5wTaWDk'})
   ],
