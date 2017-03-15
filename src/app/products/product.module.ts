@@ -10,13 +10,15 @@ import { ProductDetailDialogComponent } from './product-detail-dialog.component'
 import { ProductFilterPipe } from './product-filter.pipe';
 import { ProductDetailGuard } from './product-guard.service';
 import { ProductService } from './product.service';
+import { ProductListMdCardDirective } from './product-list-md-card.directive';
 
 @NgModule({
   declarations: [
     ProductListComponent,
     ProductDetailComponent,
     ProductDetailDialogComponent,
-    ProductFilterPipe
+    ProductFilterPipe,
+    ProductListMdCardDirective
   ],
   imports: [
     ProductRoutingModule,

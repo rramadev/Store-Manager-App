@@ -7,7 +7,7 @@ import { ProductDetailGuard } from './product-guard.service';
 
 const productRoutes: Routes = [
   { path: 'products', component: ProductListComponent },
-  { path: 'product/:id',
+  { path: 'products/:id',
       canActivate: [ ProductDetailGuard ],
       component: ProductDetailComponent }
 ];

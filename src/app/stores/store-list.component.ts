@@ -68,7 +68,7 @@ export class StoreListComponent implements OnInit {
   }
 
 	setFilterValue(input: string, type: string): void {
-		type==='search' ? (
+		type === 'search' ? (
 			this.cityCtrl.setValue(''),
 			this.storeFilterMsg = '- Filtered by: ',
 			this.storeFilterInput = input,

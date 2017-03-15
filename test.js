@@ -1,4 +1,4 @@
-// Operator
+// Operator (Returns a new Observable)
 function map(transformFn) {
   const inputObservable = this;
   const outputObservable = createObservable(function subscribe(outputObserver) {
@@ -35,19 +35,25 @@ const arrayObservable = createObservable(function subscribe(observer) {
 // };
 
 // Observer Object with CB Functions
+// const observer = {
+//   next: function nextCB(data, i, a) {
+//     console.log(`Received: ${data}`);
+//   },
+//   error: function errorCB(err) {
+//     console.log(err);
+//   },
+//   complete: function completeCB() {
+//     console.log('Done!');
+//   }
+// };
 const observer = {
-  next: function nextCB(data, i, a) {
-    console.log(`Received: ${data}`);
-  },
-  error: function errorCB(err) {
-    console.log(err);
-  },
-  complete: function completeCB() {
-    console.log('Done!');
-  }
+  next: (data, i, a) => console.log(`Received: ${data}`),
+  error: (err) => console.log(err),
+  complete: () => console.log('Done!')
 };
 
 // Subscribe to Observable
 arrayObservable
   .map(x => x*2)
+  .map(x => x+10)
   .subscribe(observer);

@@ -10,7 +10,7 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
     "skipLibCheck": true,
-    "types": [ "node", "core-js", "hammerjs" ]
+    "types": [ "node", "core-js", "hammerjs", "google-maps" ]
   },
   "exclude": [
     "node_modules"

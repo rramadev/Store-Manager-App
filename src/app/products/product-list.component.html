@@ -33,7 +33,7 @@
         [colspan]="1"
         [rowspan]="1">
 
-        <md-card class="md-card-product" [routerLink]="['/product', product.id]">
+        <md-card mdCardBorder class="md-card-product" [routerLink]="['/products', product.id]">
           <img md-card-image id="product{{i}}" [src]="product.imageUrl" [title]="product.productName">
           <md-card-header>
             <md-card-title class="md-card-title-product">

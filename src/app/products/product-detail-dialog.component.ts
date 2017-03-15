@@ -7,7 +7,7 @@ import { IProduct } from './product.model';
 	moduleId: module.id,
   selector: 'product-detail-dialog',
   templateUrl: './product-detail-dialog.component.html',
-	styleUrls: ['./product-detail-dialog.component.css']	
+	styleUrls: ['./product-detail-dialog.component.css']
 })
 export class ProductDetailDialogComponent {
 	product: IProduct;
