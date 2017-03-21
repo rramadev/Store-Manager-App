@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     tslint = require('gulp-tslint'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
+    concatjs = require("gulp-concat-js"),
     sourcemaps = require('gulp-sourcemaps'),
     sysBuilder = require('systemjs-builder'),
     plumber = require('gulp-plumber'),
@@ -11,29 +12,35 @@ var gulp = require('gulp'),
     colors  = require('colors'),
     sass = require('gulp-sass'),
     sassLint = require('gulp-sass-lint'),
-    cleanCSS = require('gulp-clean-css');
+    cleanCSS = require('gulp-clean-css'),
+    tsconfig = require('tsconfig-glob'),
+    clean = require('gulp-clean'),
+    rollup = require('rollup').rollup,
+    rollupTypescript = require('rollup-plugin-typescript'),
+    nodeResolve = require('rollup-plugin-node-resolve'),
+    commonjs = require('rollup-plugin-commonjs');
 
-var tscConfig = require('./tsconfig.json');
+var tscConfig = require('./src/tsconfig.json');
 
-// Clean the js distribution directory
-gulp.task('clean:dist:js', function () {
-  return del('public/dist/js/*');
+// Clean the app directory
+gulp.task('clean:ts', function () {
+  return del(['src/**/*.js', 'src/**/*.js.map', '!src/systemjs.config.js']);
 });
 
-// Clean the css distribution directory
-gulp.task('clean:dist:css', function () {
-  return del('public/dist/css/*');
+// Clean the js distribution directory
+gulp.task('clean:dist', function () {
+  return del('dist/js/**/*');
 });
 
 // Clean library directory
-gulp.task('clean:lib', function () {
-  return del('public/lib/**/*');
-});
+// gulp.task('clean:lib', function () {
+//   return del('public/lib/**/*');
+// });
 
 // Clean test build directory
-gulp.task('clean:tests', function () {
-  return del('tests/js/**/*');
-});
+// gulp.task('clean:tests', function () {
+//   return del('tests/js/**/*');
+// });
 
 // Lint Typescript
 // gulp.task('lint:ts', function() {
@@ -42,39 +49,129 @@ gulp.task('clean:tests', function () {
 //     .pipe(tslint.report('verbose', { emitError: false }));
 // });
 
+// gulp.task('clean:dist', function () {
+//   return gulp.src(['./dist/js'], {read: false})
+//     .pipe(clean());
+// });
+//
+// gulp.task('clean:ts', function () {
+//   return gulp.src(['./src/**/*.js', './src/**/*.js.map'], {read: false})
+//     .pipe(clean());
+// });
+
 // Compile TypeScript to JS
-gulp.task('compile:ts', function () {
+gulp.task('compile:ts', ['clean:ts'], function () {
+  // return gulp
+  //   .src(tscConfig.filesGlob)
+  //   .pipe(plumber({
+  //     errorHandler: function (err) {
+  //       console.error('>>> [tsc] Typescript compilation failed'.bold.green);
+  //       this.emit('end');
+  //     }}))
+  //   .pipe(sourcemaps.init())
+  //   .pipe(tsc(tscConfig.compilerOptions))
+  //   .pipe(sourcemaps.write('.'))
   return gulp
-    .src(tscConfig.filesGlob)
-    .pipe(plumber({
-      errorHandler: function (err) {
-        console.error('>>> [tsc] Typescript compilation failed'.bold.green);
-        this.emit('end');
-      }}))
+    .src([
+        "src/**/*.ts"
+    ])
     .pipe(sourcemaps.init())
     .pipe(tsc(tscConfig.compilerOptions))
+    // .pipe(tsc({
+    //   "target": "es5",
+    //   "module": "system",
+    //   "moduleResolution": "node",
+    //   "sourceMap": true,
+    //   "emitDecoratorMetadata": true,
+    //   "experimentalDecorators": true,
+    //   "removeComments": false,
+    //   "noImplicitAny": true,
+    //   "suppressImplicitAnyIndexErrors": true,
+    //   "skipLibCheck": true,
+    //   "types": [ "node", "core-js", "hammerjs", "google-maps" ],
+    //   "outFile": "dist/js/main.min.js"
+    // }))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('public/dist/js'));
+    .pipe(gulp.dest('src'));
 });
 
 // Generate systemjs-based builds
-gulp.task('bundle:js', function() {
-  var builder = new sysBuilder('public', './system.config.js');
-  return builder.buildStatic('app', 'public/dist/js/app.min.js')
-    .then(function () {
-      return del(['public/dist/js/**/*', '!public/dist/js/app.min.js']);
-    })
+gulp.task('bundle:app', ['clean:dist'], function() {
+  var builder = new sysBuilder('./', 'src/systemjs.config.js');
+  return builder.buildStatic('src/main.js', 'dist/js/main.min.js', { minify: false, sourceMaps: false })
+    // .then(function () {
+    //   return del(['dist/js/**/*', '!dist/js/app.min.js']);
+    // })
     .catch(function(err) {
       console.error('>>> [systemjs-builder] Bundling failed'.bold.green, err);
     });
+
+  // return gulp.src(["src/**/*.js", "node_modules/systemjs/dist/system.src.js"])
+  //   .pipe(sourcemaps.init())
+  //     .pipe(concatjs({
+  //         "target": "main.min.js",
+  //         "entry": "./src/main.js"
+  //     }))
+  //   .pipe(sourcemaps.write())
+  //   .pipe(gulp.dest("./dist/js"));
 });
 
-// Minify JS bundle
-gulp.task('minify:js', function() {
+gulp.task('bundle:vendor', function () {
+  var builder = new sysBuilder('./', 'src/systemjs.config.js');
+  return builder
+      .buildStatic('./src/vendor.js', './dist/js/vendor.min.js')
+      .catch(function (err) {
+          console.log('Vendor bundle error');
+          console.log(err);
+      });
+});
+
+gulp.task('build:rollup', function () {
+  return rollup.rollup({
+    entry: "./src/main.ts",
+    plugins: [
+      // nodeResolve({
+      //   jsnext: true,
+      //   module: true
+      // }),
+      // commonjs({
+      //   include: 'node_modules/rxjs/**',
+      // }),
+      rollupTypescript()
+    ],
+  })
+    .then(function (bundle) {
+      bundle.write({
+        format: "iife",
+        moduleName: "main",
+        dest: "./dist/js/main.bundle.js",
+        sourceMap: true
+      });
+    })
+});
+
+gulp.task('build:rollup2', function () {
+  return rollup({
+    entry: 'src/main.js',
+    plugins: [
+      nodeResolve({ jsnext: true, main: true, module: true }),
+      commonjs()
+    ]
+  }).then(function (bundle) {
+    return bundle.write({
+      format: 'iife',
+      moduleName: 'main',
+      dest: 'dist/js/main.es2015.js'
+    });
+  });
+});
+
+// Minify App bundle
+gulp.task('minify:app', function() {
   return gulp
-    .src('public/dist/js/app.min.js')
+    .src('./dist/js/main.bundle.js')
     .pipe(uglify())
-    .pipe(gulp.dest('public/dist/js'));
+    .pipe(gulp.dest('./dist/js/main.bundle.min.js'));
 });
 
 // Lint Sass
@@ -231,13 +328,15 @@ gulp.task('test', ['compile:specs'], function() {
 
 // gulp.task('lint', ['lint:ts', 'lint:sass']);
 
-gulp.task('clean', ['clean:dist:js', 'clean:dist:css', 'clean:lib', 'clean:tests']);
+// gulp.task('clean', ['clean:dist:js', 'clean:dist:css', 'clean:lib', 'clean:tests']);
+
+gulp.task('clean', ['clean:ts', 'clean:dist']);
 
 gulp.task('copy', function(callback) {
   runSequence(['clean:lib'], 'copy:libs', callback);
 });
 gulp.task('scripts', function(callback) {
-  runSequence(['clean:dist:js'], 'compile:ts', 'bundle:js', 'minify:js', callback);
+  runSequence(['clean:dist:js'], 'compile:ts', 'bundle:app', 'minify:js', callback);
 });
 gulp.task('styles', function(callback) {
   runSequence(['lint:sass', 'clean:dist:css'], ['compile:sass', 'minify:css'], callback);
