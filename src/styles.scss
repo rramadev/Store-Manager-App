@@ -1,6 +1,6 @@
 /*fonts*/
 @font-face {
-  font-family: my256B;
+  font-family: my256B; 
   src: url(../assets/fonts/256BYTES.ttf);
 }
 
@@ -8,7 +8,7 @@
   font-family: quicksand;
   src: url(../assets/fonts/Quicksand-Bold.otf);
 }
- 
+
 /*html, body*/
 * {
 	box-sizing: border-box;
@@ -260,11 +260,11 @@ div.showTools {
 
 /* Media Queries */
 
-/* - For tablets: 1024px@16px */
+/* - For tablets: max 1024px@16px */
 @media only screen and (max-width: 64em) {}
 
-/* - For desktop: 1024px@16px*/
-@media only screen and (min-width: 64px) {}
+/* - For desktop: min 1024px@16px*/
+@media only screen and (min-width: 64em) {}
 
-/* - For Wide-desktop: 1300px@16px*/
+/* - For Wide-desktop: min 1300px@16px*/
 @media only screen and (min-width: 81em) {}

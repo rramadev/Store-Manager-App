@@ -13,6 +13,7 @@
     "build:tsc": "tsc -p src/",
     "build:tsc:w": "tsc -p src/ -w",
     "build:gulp": "gulp build",
+    "build:sass": "node-sass --output-style compressed src/styles.scss src/styles.min.css ",
     "lint": "tslint ./src/app/**/*.ts -t verbose",
     "rollup": "rollup",
     "build:rollup": "rollup -c rollup.config.js",
