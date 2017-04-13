@@ -1,4 +1,9 @@
-// Operator (Returns a new Observable)
+/**
+ * Operator (Returns a new Observable)
+ * 
+ * @param {any} transformFn 
+ * @returns 
+ */
 function map(transformFn) {
   const inputObservable = this;
   const outputObservable = createObservable(function subscribe(outputObserver) {
@@ -14,7 +19,13 @@ function map(transformFn) {
   return outputObservable;
 };
 
-// Create Observable Object
+
+/**
+ * Create Observable Object
+ * 
+ * @param {any} subscribeFn 
+ * @returns 
+ */
 function createObservable(subscribeFn) {
   return {
     subscribe: subscribeFn,
