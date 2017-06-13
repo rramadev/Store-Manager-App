@@ -5,12 +5,26 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class LoggerService {
 
+    success: string = [
+      'background: green',
+      'color: white',
+      'display: block',
+      'text-align: center'
+    ].join(';');
+
+    failure: string = [
+      'background: red',
+      'color: white',
+      'display: block',
+      'text-align: center'
+    ].join(';');
+
     log(message: string): void {
-      console.log('Log.info: ' + message);
+      console.log('%c Log.info: %s', this.success, message);
     }
 
     error(message: string): void {
-      console.error('Log.error: ' + message);
+      console.error('%c Log.error: %s', this.failure, message);
     }
 
     handleError(error: Response | any) {

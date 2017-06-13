@@ -26,10 +26,10 @@ export class ProductDetailComponent implements OnInit {
 	private subcription: Subscription;
 
 	constructor(private route: ActivatedRoute,
-							private router: Router,
-						  private productService: ProductService,
-							public dialog: MdDialog,
-							private loggerService: LoggerService) {	}
+		private router: Router,
+		private productService: ProductService,
+		public dialog: MdDialog,
+		private loggerService: LoggerService) { }
 
 	onBack(): void {
 		this.router.navigate(['/products']);
@@ -45,15 +45,15 @@ export class ProductDetailComponent implements OnInit {
 
 	openDialog(): void {
 		this.updated = false;
-    let dialogRef = this.dialog.open(ProductDetailDialogComponent);
+		let dialogRef = this.dialog.open(ProductDetailDialogComponent);
 		dialogRef.componentInstance.product = this.product;
-    dialogRef.afterClosed().subscribe(result => {
+		dialogRef.afterClosed().subscribe(result => {
 			(typeof result === 'object') ? (
 				this.showBar = true,
 				this.updateProduct(result))
 				: this.updated = false;
-    });
-  }
+		});
+	}
 
 	getProduct(id: number) {
 		this.productService.getProduct(id).subscribe(
@@ -70,10 +70,12 @@ export class ProductDetailComponent implements OnInit {
 				this.product = Object.assign({}, product);
 				this.showBar = false;
 				this.updated = true;
+        this.loggerService.log('Product updated successfully!');
 			},
 			error => {
 				this.errorMessage = <any>error;
 				this.showBar = false;
+        this.loggerService.error('Error on product update!');
 			});
 	}
 
@@ -86,6 +88,7 @@ export class ProductDetailComponent implements OnInit {
 				this.showBar = false;
 				this.deleted = true;
 				this.setTitle();
+        this.loggerService.log('Product deleted successfully!');
 			},
 			error => this.errorMessage = <any>error);
 	}
