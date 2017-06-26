@@ -12,12 +12,13 @@ A complete Angular2 demo app using:
 - Angular 2.4
     * Angular Material 2
     * Angular in-memory-web-api
+- Reactive-Extensions RxJS
 - SystemJS
 - NPM Build
 
 This is a sample application of the Angular 2.4 framework, using some of the latest web front-end development technologies.
 
-The app consists on two main different sections, which provide the possibility of managing the Stores and Product lists and details.
+The app consists on two main different modules, which provide the possibility of managing the Stores and Product lists and details.
 
 *You can see a running demo* [here](https://...).
 
@@ -25,12 +26,11 @@ The app consists on two main different sections, which provide the possibility o
 
 command | description
 --- | ---
-`npm run start`| build, start concurrently watch sass and lite-server
+`npm run start`| build typescript, start concurrently watch typescript and lite-server
 `npm run server`| start lite-server
-`npm run build`| sass build and clean unused css styles
-`npm run build:sass`| sass build
-`npm run watch:sass`| watch sass
-`npm run clean:css`| clean unused css styles
+`npm run build:tsc`| typescript build
+`npm run build:tsc:w`| typescript build and watch for changes
+`npm run build:sass`| build sass
 
 ## Installation
 
