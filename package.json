@@ -17,6 +17,7 @@
     "node": "6.11.0"
   },
   "scripts": {
+    "preinstall": "rm -rf ./node_modules/",
     "start": "npm run build:tsc && concurrently \"npm run build:tsc:w\" \"npm run server\" ",
     "server": "lite-server -c bs-config.json",
     "build:tsc": "tsc -p src/",
