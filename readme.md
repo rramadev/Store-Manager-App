@@ -4,7 +4,7 @@
 
 A complete Angular2 demo app using:
 
-- Html5 
+- Html5
 - CSS3
 - SASS
 - Bootstrap
@@ -26,7 +26,7 @@ The app consists on two main different modules, which provide the possibility of
 
 command | description
 --- | ---
-`npm run start`| build typescript, start concurrently watch typescript and lite-server
+`npm run start`| build typescript, build sass, start concurrently watch typescript and lite-server
 `npm run server`| start lite-server
 `npm run build:tsc`| typescript build
 `npm run build:tsc:w`| typescript build and watch for changes
@@ -40,4 +40,4 @@ command | description
     This installs the dependencies as defined in the package.json file.
 
 3) Type: `npm start`
-    This launches the builder to compile the sass files to css, clean the minified css file and wait for changes. It also starts the lite-server and launches the browser to run the application.
+    This launches the builder to transpile the typescript files to js and to compile the sass files to css and wait for ts changes. It also starts the lite-server and launches the browser to run the application.

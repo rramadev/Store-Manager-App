@@ -18,7 +18,7 @@
   },
   "scripts": {
     "preinstall": "rm -rf ./node_modules/",
-    "start": "npm run build:tsc && concurrently \"npm run build:tsc:w\" \"npm run server\" ",
+    "start": "npm run build:tsc && npm run build:sass && concurrently \"npm run build:tsc:w\" \"npm run server\" ",
     "server": "lite-server -c bs-config.json",
     "build:tsc": "tsc -p src/",
     "build:tsc:w": "tsc -p src/ -w",
