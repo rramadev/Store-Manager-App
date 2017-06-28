@@ -8,10 +8,10 @@
   "homepage": "...",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rramadev/..."
+    "url": "https://github.com/rramadev/Store-Manager-App"
   },
   "bugs": {
-    "url": "https://github.com/rramadev/.../issues"
+    "url": "https://github.com/rramadev/Store-Manager-App/issues"
   },
   "engines": {
     "node": "6.11.0"
